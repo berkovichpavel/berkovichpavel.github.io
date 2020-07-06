@@ -1,0 +1,653 @@
+ .background {
+     background-color: #E4E3E3;
+     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+     .background-top {
+         width: 100%;
+         display: flex;
+         background: rgb(98, 16, 23);
+         height: 300px;
+         margin: 0px;
+         padding: 0px;
+         .short-information {
+             position: relative;
+             margin-left: 60px;
+             margin-top: 20px;
+             p,
+             h1 {
+                 color: ivory;
+             }
+             h1 {
+                 font-size: 37px;
+             }
+             p {
+                 font-size: 16px;
+             }
+         }
+     }
+     .information-column {
+         h1 {
+             color: rgb(98, 16, 23);
+         }
+         width: 60%;
+         height: auto;
+         margin: 30px auto;
+         background:#F2F2F2;
+         .about-me-card {
+             background: #F2F2F2;
+             height: 300px;
+             margin-top: -180px;
+             display: flex;
+             .photo {
+                 flex: 1;
+                 text-align: left;
+                 img {
+                     float: left;
+                     max-width: 300px;
+                     max-height: 300px;
+                     min-width: 300px;
+                     min-height: 300px;
+                     display: block;
+                     margin: 0 auto;
+                     width: 100%;
+                     height: 100%;
+                 }
+             }
+             .information {
+                 flex: 2;
+                 h2 {
+                     .color {
+                         color: rgb(98, 16, 23);
+                     }
+                 }
+                 p,
+                 h2,
+                 table {
+                     margin-left: 10px;
+                 }
+                 p {
+                     margin-top: -10px;
+                 }
+                 table {
+                     font-size: 110%;
+                     width: 70%;
+                     tbody {
+                         margin-top: 20px;
+                         margin-bottom: 38px;
+                         tr {
+                             td {
+                                 padding-right: 20px;
+                                 a {
+                                     text-decoration: none;
+                                     color: rgb(98, 16, 23);
+                                      :visited {
+                                         color: rgb(98, 16, 23);
+                                     }
+                                 }
+                                 ul {
+                                     padding: 0;
+                                     margin-bottom: 5px;
+                                     margin-top: -2px;
+                                     li {
+                                         white-space: nowrap;
+                                         list-style: none;
+                                         padding-left: 24px;
+                                         height: 16px;
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+         }
+         .my-skills {
+             margin-left: 10px;
+             margin-bottom: 10px;
+             .skills-container {
+                 width: 80%;
+                 margin: 10px auto;
+                 ul {
+                     font-size: 18px;
+                     text-align: left;
+                     columns: 2;
+                 }
+             }
+         }
+         .my-projects{
+            .card-holder {
+
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                .simple-card {
+                    flex: 1;
+                    margin: 3%;
+                    min-width: 160px;
+                    max-width: 24%;
+                    min-height: 280px;
+                    max-height: 280px;
+                    border: 5px solid #C2D4DB;
+                    padding: 10px;
+                    display: flex;
+                    flex-flow: column wrap;
+                    .picture {
+                        flex: 3;
+                        min-height: 100px;
+                        img {
+                            display: block;
+                            margin: 0 auto;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                    .title {
+                        flex: 1;
+                        h1 {
+                            color: #273D52;
+                            margin-top: 10px;
+                            font-size: 110%;
+                            text-align: center;
+                        }
+                    }
+                    .description {
+                        flex: 2;
+                        margin-top: -10px;
+                        div {
+                            width: 100%;
+                            h1 {
+                                font-size: 90%;
+                            }
+                        }
+                        p {
+                            text-align: center;
+                            font-size: 90%;
+                            margin: 1px;
+                        }
+                    }
+                    .link {
+                        flex: 1;
+                        max-height: 25px;
+                        background: #8F0305;
+                        h1 {
+                            margin-top: 3px;
+                            font-size: 90%;
+                            text-align: center;
+                            color: whitesmoke
+                        }
+                    }
+                }
+                .simple-card:hover {
+                    -webkit-transform: scale(1.1);
+                    -ms-transform: scale(1.1);
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        .my-education {
+            margin-left: 10px;
+            .my-education-container {
+                width: 90%;
+                padding: 30px 0;
+                margin: 10px auto;
+                position: relative;
+                overflow: hidden;
+                .timeline-block {
+                     width: calc(50% + 10px);
+                     display: flex;
+                     clear: both;
+                     .marker {
+                         width: 20px;
+                         height: 20px;
+                         border-radius: 50%;
+                         border: 2px solid #F5F7FA;
+                         background: rgb(98, 16, 23);
+                         margin-top: 10px;
+                         z-index: 9999;
+                     }
+                     .timeline-content {
+                         width: 95%;
+                         padding: 0 15px;
+                         color: rgb(98, 16, 23);
+                         h3 {
+                             margin-top: 5px;
+                             margin-bottom: 5px;
+                             font-size: 25px;
+                             font-weight: 500;
+                         }
+                         span {
+                             font-size: 16px;
+                             color: #a4a4a4;
+                         }
+                         p {
+                             font-size: 16px;
+                             line-height: 1.5em;
+                             word-spacing: 1px;
+                             color: black;
+                         }
+                     }
+                 }
+                 .timeline-block-right {
+                     float: right;
+                 }
+                 .timeline-block-left {
+                     float: left;
+                     direction: rtl
+                 }
+             }
+             .my-education-container:before {
+                 content: '';
+                 position: absolute;
+                 top: 0;
+                 left: 50%;
+                 margin-left: -1px;
+                 width: 2px;
+                 height: 100%;
+                 background: #CCD1D9;
+                 z-index: 1;
+             }
+         }
+         .about-my-self {
+             margin-left: 10px;
+             .about-my-self-container {
+                 width: 80%;
+                 margin: 10px auto;
+                 p {
+                     text-align: left;
+                     font-size: 18px;
+                 }
+             }
+         }
+     }
+     .anchor-href {
+         text-decoration: none;
+         .anchor {
+             width: 100%;
+             height: 40px;
+             background: rgb(98, 16, 23);
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             h2 {
+                 font-size: 20px;
+                 color: ivory;
+                 margin: 0
+             }
+         }
+     }
+ }
+
+ @media (max-width: 1240px) {
+     .background {
+         .information-column {
+             width: 82%;
+         }
+     }
+ }
+
+ @media (max-width: 935px) {
+     .background {
+         .information-column {
+             width: 94%;
+         }
+     }
+ }
+
+ @media(max-width: 800px) {
+     .background {
+         .background-top {
+             height: 200px;
+             .short-information {
+                 h1 {
+                     font-size: 24px;
+                 }
+                 p {
+                     font-size: 14px;
+                 }
+             }
+         }
+         .information-column {
+             h1 {
+                 font-size: 25px;
+             }
+             .about-me-card {
+                 margin-top: -120px;
+                 height: 220px;
+                 .photo {
+                     img {
+                         max-width: 220px;
+                         max-height: 220px;
+                         min-width: 220px;
+                         min-height: 220px;
+                     }
+                 }
+                 .information {
+                     h2 {
+                         font-size: 120%;
+                     }
+                     table,
+                     p {
+                         font-size: 80%;
+                     }
+                     table {
+                         width: 60%;
+                         tbody {
+                             tr {
+                                 td {
+                                     ul {
+                                         margin-bottom: 3px;
+                                         li {
+                                             a {
+                                                 font-size: 84.4% !important;
+                                             }
+                                         }
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+             .my-skills {
+                 margin-top: 50px;
+                 .skills-container {
+                     ul {
+                         font-size: 14.5px;
+                     }
+                 }
+             }
+             .my-projects{
+                .card-holder {
+                    .simple-card {
+                        margin: 3%;
+                        min-width: 160px;
+                        max-width: 24%;
+                        min-height: 240px;
+                        max-height: 240px;
+                        .title {
+                            flex: 1;
+                            h1 {
+                                font-size: 80%;
+                            }
+                        }
+                        .description {
+                            div {
+                                h1 {
+                                    font-size: 75%;
+                                }
+                            }
+                            p {
+                                font-size: 70%;
+                            }
+                        }
+                        .link {
+                            max-height: 15px;
+                            h1 {
+                                margin-top: -1px;
+                                font-size: 80%;
+                            }
+                        }
+                    }
+                }
+            }
+
+             .about-my-self {
+                 .about-my-self-container {
+                     p {
+                         font-size: 14.5px;
+                     }
+                 }
+             }
+             .my-education {
+                 .my-education-container {
+                     padding: 10px 0px 0px;
+                     .timeline-block {
+                         width: 100%;
+                         margin-bottom: 30px;
+                         .timeline-content {
+                             h3 {
+                                 font-size: 18px;
+                             }
+                             span {
+                                 font-size: 14px;
+                             }
+                             p {
+                                 font-size: 14.5px;
+                             }
+                         }
+                     }
+                     .timeline-block-right {
+                         float: none;
+                     }
+                     .timeline-block-left {
+                         float: none;
+                         direction: ltr;
+                     }
+                 }
+                 .my-education-container:before {
+                     left: 8px;
+                     width: 2px;
+                 }
+             }
+         }
+         .anchor-href {
+             .anchor {
+                 height: 30px;
+                 h2 {
+                     font-size: 18px;
+                 }
+             }
+         }
+     }
+ }
+
+ @media (max-width: 760px) {
+    .background {
+        .information-column {
+            .my-projects{
+                .card-holder {
+                    .simple-card {
+                    margin-left: 13%;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+@media (max-width: 612px) {
+    .background {
+        .information-column {
+            .my-projects{
+                .card-holder {
+                    .simple-card {
+                    margin-left: 5%;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+ @media (max-width: 600px) {
+     .background {
+         .information-column {
+             h1 {
+                 font-size: 20px;
+             }
+             .about-me-card {
+                 height: 180px;
+                 .photo {
+                     img {
+                         max-width: 180px;
+                         max-height: 180px;
+                         min-width: 180px;
+                         min-height: 180px;
+                     }
+                 }
+                 .information {
+                     table {
+                         tbody {
+                             font-size: 80%;
+                         }
+                     }
+                 }
+             }
+             .my-skills {
+                 margin-top: 35px;
+                 .skills-container {
+                     ul {
+                         font-size: 14px;
+                     }
+                 }
+             }
+             .about-my-self {
+                 .about-my-self-container {
+                     p {
+                         font-size: 14px;
+                     }
+                 }
+             }
+             .my-education {
+                 .my-education-container {
+                     .timeline-block {
+                         .timeline-content {
+                             h3 {
+                                 font-size: 16px;
+                             }
+                             span {
+                                 font-size: 13px;
+                             }
+                             p {
+                                 font-size: 14px;
+                             }
+                         }
+                     }
+                 }
+             }
+         }
+         .anchor-href {
+             .anchor {
+                 height: 25px;
+                 h2 {
+                     font-size: 16px;
+                 }
+             }
+         }
+     }
+ }
+
+ @media print {
+     .background {
+         .background-top {
+             height: 200px;
+             .short-information {
+                 h1 {
+                     font-size: 24px;
+                 }
+                 p {
+                     font-size: 14px;
+                 }
+             }
+         }
+         .information-column {
+             width: 85%;
+             h1 {
+                 font-size: 25px;
+             }
+             .about-me-card {
+                 margin-top: -120px;
+                 height: 220px;
+                 .photo {
+                     img {
+                         max-width: 220px;
+                         max-height: 220px;
+                         min-width: 220px;
+                         min-height: 220px;
+                     }
+                 }
+                 .information {
+                     h2 {
+                         font-size: 120%;
+                     }
+                     table,
+                     p {
+                         font-size: 80%;
+                     }
+                     table {
+                         tbody {
+                             font-size: 115%;
+                             tr {
+                                 td {
+                                     ul {
+                                         margin-bottom: 3px;
+                                         li {
+                                             a {
+                                                 font-size: 14px;
+                                             }
+                                         }
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+             .my-skills {
+                 margin-top: 20px;
+                 .skills-container {
+                     ul {
+                         font-size: 14px;
+                     }
+                 }
+             }
+             .my-projects{
+                display: none;
+            }
+             .about-my-self {
+                 .about-my-self-container {
+                     p {
+                         font-size: 14px;
+                     }
+                 }
+             }
+             .my-education {
+                 .my-education-container {
+                     padding: 0px;
+                     .timeline-block {
+                         width: 100%;
+                         .timeline-content {
+                             h3 {
+                                 font-size: 14.5px;
+                             }
+                             span {
+                                 font-size: 10.5px;
+                             }
+                             p {
+                                 font-size: 11.85px;
+                             }
+                         }
+                     }
+                     .timeline-block-right {
+                         float: none;
+                     }
+                     .timeline-block-left {
+                         float: none;
+                         direction: ltr;
+                     }
+                 }
+                 .my-education-container:before {
+                     left: 8px;
+                     width: 2px;
+                 }
+             }
+         }
+         .anchor-href {
+             .anchor {
+                 display: none;
+             }
+         }
+     }
+ }

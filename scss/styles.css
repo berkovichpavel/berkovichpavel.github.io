@@ -1,0 +1,311 @@
+.background {
+  background-color: #E4E3E3;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif; }
+  .background .background-top {
+    width: 100%;
+    display: flex;
+    background: #621017;
+    height: 300px;
+    margin: 0px;
+    padding: 0px; }
+    .background .background-top .short-information {
+      position: relative;
+      margin-left: 60px;
+      margin-top: 20px; }
+      .background .background-top .short-information p,
+      .background .background-top .short-information h1 {
+        color: ivory; }
+      .background .background-top .short-information h1 {
+        font-size: 37px; }
+      .background .background-top .short-information p {
+        font-size: 16px; }
+  .background .information-column {
+    width: 60%;
+    height: auto;
+    margin: 30px auto;
+    background: #F2F2F2; }
+    .background .information-column h1 {
+      color: #621017; }
+    .background .information-column .about-me-card {
+      background: #F2F2F2;
+      height: 300px;
+      margin-top: -180px;
+      display: flex; }
+      .background .information-column .about-me-card .photo {
+        flex: 1;
+        text-align: left; }
+        .background .information-column .about-me-card .photo img {
+          float: left;
+          max-width: 300px;
+          max-height: 300px;
+          min-width: 300px;
+          min-height: 300px;
+          display: block;
+          margin: 0 auto;
+          width: 100%;
+          height: 100%; }
+      .background .information-column .about-me-card .information {
+        flex: 2; }
+        .background .information-column .about-me-card .information h2 .color {
+          color: #621017; }
+        .background .information-column .about-me-card .information p,
+        .background .information-column .about-me-card .information h2,
+        .background .information-column .about-me-card .information table {
+          margin-left: 10px; }
+        .background .information-column .about-me-card .information p {
+          margin-top: -10px; }
+        .background .information-column .about-me-card .information table {
+          font-size: 110%;
+          width: 70%; }
+          .background .information-column .about-me-card .information table tbody {
+            margin-top: 20px;
+            margin-bottom: 38px; }
+            .background .information-column .about-me-card .information table tbody tr td {
+              padding-right: 20px; }
+              .background .information-column .about-me-card .information table tbody tr td a {
+                text-decoration: none;
+                color: #621017; }
+                .background .information-column .about-me-card .information table tbody tr td a :visited {
+                  color: #621017; }
+              .background .information-column .about-me-card .information table tbody tr td ul {
+                padding: 0;
+                margin-bottom: 5px;
+                margin-top: -2px; }
+                .background .information-column .about-me-card .information table tbody tr td ul li {
+                  white-space: nowrap;
+                  list-style: none;
+                  padding-left: 24px;
+                  height: 16px; }
+    .background .information-column .my-skills {
+      margin-left: 10px;
+      margin-bottom: 10px; }
+      .background .information-column .my-skills .skills-container {
+        width: 80%;
+        margin: 10px auto; }
+        .background .information-column .my-skills .skills-container ul {
+          font-size: 18px;
+          text-align: left;
+          columns: 2; }
+    .background .information-column .my-education {
+      margin-left: 10px; }
+      .background .information-column .my-education .my-education-container {
+        width: 90%;
+        padding: 30px 0;
+        margin: 10px auto;
+        position: relative;
+        overflow: hidden; }
+        .background .information-column .my-education .my-education-container .timeline-block {
+          width: calc(50% + 10px);
+          display: flex;
+          clear: both; }
+          .background .information-column .my-education .my-education-container .timeline-block .marker {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #F5F7FA;
+            background: #621017;
+            margin-top: 10px;
+            z-index: 9999; }
+          .background .information-column .my-education .my-education-container .timeline-block .timeline-content {
+            width: 95%;
+            padding: 0 15px;
+            color: #621017; }
+            .background .information-column .my-education .my-education-container .timeline-block .timeline-content h3 {
+              margin-top: 5px;
+              margin-bottom: 5px;
+              font-size: 25px;
+              font-weight: 500; }
+            .background .information-column .my-education .my-education-container .timeline-block .timeline-content span {
+              font-size: 16px;
+              color: #a4a4a4; }
+            .background .information-column .my-education .my-education-container .timeline-block .timeline-content p {
+              font-size: 16px;
+              line-height: 1.5em;
+              word-spacing: 1px;
+              color: black; }
+        .background .information-column .my-education .my-education-container .timeline-block-right {
+          float: right; }
+        .background .information-column .my-education .my-education-container .timeline-block-left {
+          float: left;
+          direction: rtl; }
+      .background .information-column .my-education .my-education-container:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -1px;
+        width: 2px;
+        height: 100%;
+        background: #CCD1D9;
+        z-index: 1; }
+    .background .information-column .about-my-self {
+      margin-left: 10px; }
+      .background .information-column .about-my-self .about-my-self-container {
+        width: 80%;
+        margin: 10px auto; }
+        .background .information-column .about-my-self .about-my-self-container p {
+          text-align: left;
+          font-size: 18px; }
+  .background .anchor-href {
+    text-decoration: none; }
+    .background .anchor-href .anchor {
+      width: 100%;
+      height: 40px;
+      background: #621017;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .background .anchor-href .anchor h2 {
+        font-size: 20px;
+        color: ivory;
+        margin: 0; }
+
+@media (max-width: 1240px) {
+  .background .information-column {
+    width: 82%; } }
+@media (max-width: 935px) {
+  .background .information-column {
+    width: 94%; } }
+@media (max-width: 800px) {
+  .background .background-top {
+    height: 200px; }
+    .background .background-top .short-information h1 {
+      font-size: 24px; }
+    .background .background-top .short-information p {
+      font-size: 14px; }
+  .background .information-column h1 {
+    font-size: 25px; }
+  .background .information-column .about-me-card {
+    margin-top: -120px;
+    height: 220px; }
+    .background .information-column .about-me-card .photo img {
+      max-width: 220px;
+      max-height: 220px;
+      min-width: 220px;
+      min-height: 220px; }
+    .background .information-column .about-me-card .information h2 {
+      font-size: 120%; }
+    .background .information-column .about-me-card .information table,
+    .background .information-column .about-me-card .information p {
+      font-size: 80%; }
+    .background .information-column .about-me-card .information table {
+      width: 60%; }
+      .background .information-column .about-me-card .information table tbody tr td ul {
+        margin-bottom: 3px; }
+        .background .information-column .about-me-card .information table tbody tr td ul li a {
+          font-size: 84.4% !important; }
+  .background .information-column .my-skills {
+    margin-top: 50px; }
+    .background .information-column .my-skills .skills-container ul {
+      font-size: 14.5px; }
+  .background .information-column .about-my-self .about-my-self-container p {
+    font-size: 14.5px; }
+  .background .information-column .my-education .my-education-container {
+    padding: 10px 0px 0px; }
+    .background .information-column .my-education .my-education-container .timeline-block {
+      width: 100%;
+      margin-bottom: 30px; }
+      .background .information-column .my-education .my-education-container .timeline-block .timeline-content h3 {
+        font-size: 18px; }
+      .background .information-column .my-education .my-education-container .timeline-block .timeline-content span {
+        font-size: 14px; }
+      .background .information-column .my-education .my-education-container .timeline-block .timeline-content p {
+        font-size: 14.5px; }
+    .background .information-column .my-education .my-education-container .timeline-block-right {
+      float: none; }
+    .background .information-column .my-education .my-education-container .timeline-block-left {
+      float: none;
+      direction: ltr; }
+  .background .information-column .my-education .my-education-container:before {
+    left: 8px;
+    width: 2px; }
+  .background .anchor-href .anchor {
+    height: 30px; }
+    .background .anchor-href .anchor h2 {
+      font-size: 18px; } }
+@media (max-width: 600px) {
+  .background .information-column h1 {
+    font-size: 20px; }
+  .background .information-column .about-me-card {
+    height: 180px; }
+    .background .information-column .about-me-card .photo img {
+      max-width: 180px;
+      max-height: 180px;
+      min-width: 180px;
+      min-height: 180px; }
+    .background .information-column .about-me-card .information table tbody {
+      font-size: 80%; }
+  .background .information-column .my-skills {
+    margin-top: 35px; }
+    .background .information-column .my-skills .skills-container ul {
+      font-size: 14px; }
+  .background .information-column .about-my-self .about-my-self-container p {
+    font-size: 14px; }
+  .background .information-column .my-education .my-education-container .timeline-block .timeline-content h3 {
+    font-size: 16px; }
+  .background .information-column .my-education .my-education-container .timeline-block .timeline-content span {
+    font-size: 13px; }
+  .background .information-column .my-education .my-education-container .timeline-block .timeline-content p {
+    font-size: 14px; }
+  .background .anchor-href .anchor {
+    height: 25px; }
+    .background .anchor-href .anchor h2 {
+      font-size: 16px; } }
+@media print {
+  .background .background-top {
+    height: 200px; }
+    .background .background-top .short-information h1 {
+      font-size: 24px; }
+    .background .background-top .short-information p {
+      font-size: 14px; }
+  .background .information-column {
+    width: 85%; }
+    .background .information-column h1 {
+      font-size: 25px; }
+    .background .information-column .about-me-card {
+      margin-top: -120px;
+      height: 220px; }
+      .background .information-column .about-me-card .photo img {
+        max-width: 220px;
+        max-height: 220px;
+        min-width: 220px;
+        min-height: 220px; }
+      .background .information-column .about-me-card .information h2 {
+        font-size: 120%; }
+      .background .information-column .about-me-card .information table,
+      .background .information-column .about-me-card .information p {
+        font-size: 80%; }
+      .background .information-column .about-me-card .information table tbody {
+        font-size: 115%; }
+        .background .information-column .about-me-card .information table tbody tr td ul {
+          margin-bottom: 3px; }
+          .background .information-column .about-me-card .information table tbody tr td ul li a {
+            font-size: 14px; }
+    .background .information-column .my-skills {
+      margin-top: 20px; }
+      .background .information-column .my-skills .skills-container ul {
+        font-size: 14px; }
+    .background .information-column .about-my-self .about-my-self-container p {
+      font-size: 14px; }
+    .background .information-column .my-education .my-education-container {
+      padding: 0px; }
+      .background .information-column .my-education .my-education-container .timeline-block {
+        width: 100%; }
+        .background .information-column .my-education .my-education-container .timeline-block .timeline-content h3 {
+          font-size: 14.5px; }
+        .background .information-column .my-education .my-education-container .timeline-block .timeline-content span {
+          font-size: 10.5px; }
+        .background .information-column .my-education .my-education-container .timeline-block .timeline-content p {
+          font-size: 11.85px; }
+      .background .information-column .my-education .my-education-container .timeline-block-right {
+        float: none; }
+      .background .information-column .my-education .my-education-container .timeline-block-left {
+        float: none;
+        direction: ltr; }
+    .background .information-column .my-education .my-education-container:before {
+      left: 8px;
+      width: 2px; }
+  .background .anchor-href .anchor {
+    display: none; } }
+
+/*# sourceMappingURL=styles.css.map */

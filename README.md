@@ -1,6 +1,6 @@
 # Curriculum vitae
 
-[![View Code](https://github.com/berkovichpavel/berkovichpavel.github.io)
+[![View Code](https://img.shields.io/badge/View%20-Code-green)](https://github.com/berkovichpavel/berkovichpavel.github.io)
 
 # Author 
 

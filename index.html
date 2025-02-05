@@ -1,255 +1,152 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="shortcut icon" href ="font/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavel Biarkovich - Ruby on Rails Developer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 1000px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .left-column {
+            width: 35%;
+            padding-right: 20px;
+            border-right: 2px solid #d9534f;
+        }
+        .right-column {
+            width: 60%;
+            padding-left: 20px;
+            position: relative;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .profile-header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+        }
+        h1, h2 {
+            color: #d9534f;
+        }
+        .contact-info h3, .skills h2, .language-proficiency h3, .education h3 {
+            color: #d9534f;
+        }
+        .skills h3 {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+        }
+        .skills h3:first-child {
+            font-size: 16px;
+        }
+        .experience h3 {
+          color: #d9534f;
+        }
+        .profile-summary {
+          font-size: 17px;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="background">
-        <div class="background-top">
-            <div class="short-information">
-                <h1>Berkovich Pavel</h1>
-                <p>Software Engineer Student</p>
+    <div class="container">
+        <div class="left-column">
+            <div class="profile-header">
+                <img src="font/my_photo.jpg" alt="Pavel Biarkovich">
+                <div>
+                    <h1>Pavel Biarkovich</h1>
+                    <h2>Ruby on Rails Engineer</h2>
+                </div>
+            </div>
+            <div class="contact-info">
+                <h2>Contact</h2>
+                <p><strong>Email:</strong> <a href="mailto:berkovich.pasha@gmail.com">berkovich.pasha@gmail.com</a></p>
+                <p><strong>Phone:</strong> (+48) 571-920-420</p>
+                <p><strong>LinkedIn:</strong> <a href="#">Pavel Berkovich</a></p>
+            </div>
+            <div class="language-proficiency">
+                <h2>Language Proficiency</h2>
+                <p><strong>Russian:</strong> Native</p>
+                <p><strong>English:</strong> Intermediate</p>
+            </div>
+            <div class="skills">
+                <h2>Skills</h2>
+                <h3>Programming language & framework:</h3>
+                <p>Ruby, Ruby on Rails.</p>
+                <h3>Message brokers:</h3>
+                <p>Kafka, RabbitMQ.</p>
+                <h3>Databases:</h3>
+                <p>MongoDB, PostgreSQL, Redis.</p>
+                <h3>Testing:</h3>
+                <p>RSpec, FactoryBot, Capybara.</p>
+                <h3>DevOps:</h3>
+                <p>Docker, Docker Compose, Kubernetes, Jenkins.</p>
+                <h3>Monitoring systems:</h3>
+                <p>Datadog, Sentry, Prometheus, Grafana, Kibana.</p>
+                <h3>Source control systems:</h3>
+                <p>Git, GitHub, GitLab.</p>
+                <h3>Project management methodologies:</h3>
+                <p>Agile, Scrum, Kanban.</p>
+            </div>
+            <div class="education">
+                <h2>Education</h2>
+                <p><strong>Bachelor of Science in Applied Mathematics and Computer Science</strong></p>
+                <p>Belarusian State University (2016 - 2020)</p>
             </div>
         </div>
-        <div class="information-column">
-            <div class="about-me-card">
-                <div class="photo">
-                    <img src="font/my_photo.jpg" alt="Моя фотография">
-                </div>
-                <div class="information">
-                    <h2>I'M <span class="color">BERKOVICH PAVEL</span></h2>
-                    <p>Belarussian State University student</p>
-                    <hr />
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td><strong>DOB</strong></td>
-                                <td>17.10.2000</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Email</strong></td>
-                                <td><a href="mailto:berkovich.pasha@gmail.com">berkovich.pasha@gmail.com</a></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Phone</strong></td>
-                                <td> <a href="tel:+375 33 694 11 49">+375 33 694 11 49</a></td>
-                            </tr>
-                            <td colspan="2">
-                                &nbsp;
-                            </td>
-                            <tr>
-                                <td colspan="2">
-                                    <ul>
-                                        <li style="background: url('font/telegram-logo.png') no-repeat ">
-                                            <a href="https://t.me/BerkovichPavel">https://t.me/BerkovichPavel</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <ul>
-                                        <li style="background: url('font/github-logo.png') no-repeat">
-                                            <a href="https://github.com/berkovichpavel">https://github.com/berkovichpavel</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <ul>
-                                        <li style="background: url('font/linkedin-logo.png') no-repeat ">
-                                            <a style="font-size: 15px" href="https://www.linkedin.com/in/pavel-berkovich-9844251a4/">https://www.linkedin.com/in/pavel-berkovich-9844251a4/</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="my-skills">
-                <h1>Professional skills and technologies:</h1>
-                <div class="skills-container">
-                    <ul>
-                        <li>Ruby</li>
-                        <li>Rails</li>
-                        <li>OOP</li>
-                        <li>SQL</li>
-                        <li>Git</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>Basics of TypeScript</li>
-                        <li>Basics of C++</li>
-                        <li>Basics of Java</li>
-                        <li>Basics of JQuery</li>
-                        <li>English B1</li>
-                    </ul>
-                </div>
-            </div>
-<!--             <div class="my-projects">
-                <hr/>
-                <div class="card-holder">
-                        <div class="simple-card">
-                            <div class="picture">
-                                <img class="picture" src="font/ruby.png">
-                            </div>
-                            <div class="title">
-                                <h1 translate>RUBY</h1>
-                            </div>
-                            <div class="description">
-                                <div>
-                                    <h1>DESCRIPTION</h1>
-                                </div>
-                                <p>Ruby rush course</p>
-                                <p>Thinknetica ruby course</p>
-                            </div>
-                            <div class="link">
-                                <h1>go over</h1>
-                            </div>
-                        </div>
-                    -->
-<!--                     <div class="simple-card">
-                        <div class="picture">
-                            <img class="picture" src="font/rails.png">
-                        </div>
-                        <div class="title">
-                            <h1>RUBY ON RAILS</h1>
-                        </div>
-                        <div class="description">
-                            <div>
-                                <h1>DESCRIPTION</h1>
-                            </div>
-                            <p>Watch shop</p>
-                            <p>Sporting goods store</p>
-                        </div>
-                        <div class="link">
-                            <h1>go over</h1>
-                        </div>
-                    </div> -->
-<!--                     <div class="simple-card">
-                        <div class="picture">
-                            <img class="picture" src="font/angular.png">
-                        </div>
-                        <div class="title">
-                            <h1>ANGULAR</h1>
-                        </div>
-                        <div class="description">
-                            <div>
-                                <h1>DESCRIPTION</h1>
-                            </div>
-                            <p>Website for a logistics company</p>
-                            <p>Drag and drop</p>
-                        </div>
-                        <div class="link">
-                            <h1>go over</h1>
-                        </div>
-                    </div>
-                    <div class="simple-card">
-                        <div class="picture">
-                            <img class="picture" src="font/java.png">
-                        </div>
-                        <div class="title">
-                            <h1>JAVA</h1>
-                        </div>
-                        <div class="description">
-                            <div>
-                                <h1>DESCRIPTION</h1>
-                            </div>
-                            <p>University program</p>
-                            <p>Laboratory work on OS</p>
-                        </div>
-                        <div class="link">
-                            <h1>go over</h1>
-                        </div>
-                    </div>
-                    <div class="simple-card">
-                        <div class="picture">
-                            <img class="picture" src="font/c.png">
-                        </div>
-                        <div class="title">
-                            <h1>C++</h1>
-                        </div>
-                        <div class="description">
-                            <div>
-                                <h1>DESCRIPTION</h1>
-                            </div>
-                            <p>University program</p>
-                            <p>Laboratory work on OS</p>
-                            <p>Algorithms</p>
-                        </div>
-                        <div class="link">
-                            <h1>go over</h1>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <hr/>
-            <div class="my-education">
-                <h1>Education</h1>
-                <div class="my-education-container">
-                    <div class="timeline-block timeline-block-right">
-                        <div class="marker"></div>
-                        <div class="timeline-content">
-                            <h3>Gymnasium student</h3>
-                            <span>2006 - 2015</span>
-                            <p>Gymnasium №2 of the city of Soligorsk<br/> The study of basic subjects. Expression of interest in mathematics, computer science, chemistry. Participation in district and regional olympiads in chemistry and computer science.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-block timeline-block-left">
-                        <div class="marker"></div>
-                        <div class="timeline-content">
-                            <h3>Lyceum student</h3>
-                            <span>2018 - 2016</span>
-                            <p>Minsk State Regional Lyceum<br/> In-depth study of mathematics, physics and astronomy. Participation in the active work of the Lyceum. Organization of mass events</p>
-                        </div>
-                    </div>
-                    <div class="timeline-block timeline-block-right">
-                        <div class="marker"></div>
-                        <div class="timeline-content">
-                            <h3>Mathematician. Specialist on computer security.</h3>
-                            <span>2018 - 2022</span>
-                            <p>Belarusian State University<br/>Faculty of Applied Mathematics and Computer Science. Computer security. Learning the basics of higher mathematics and programming. </p>
-                        </div>
-                    </div>
-                    <div class="timeline-block timeline-block-left">
-                        <div class="marker"></div>
-                        <div class="timeline-content">
-                            <h3>Intern</h3>
-                            <span>October 2020 - February 2021</span>
-                            <p>iTechArt group<br/>In-depth study of Ruby and Rails. Creation of the final project <a href="https://github.com/berkovichpavel/news_portal_iTechArt">Berdacha news portal</a></p>
-                        </div>
-                    </div>
-                    <div class="timeline-block timeline-block-right">
-                        <div class="marker"></div>
-                        <div class="timeline-content">
-                            <h3>Junior RoR Developer.</h3>
-                            <span>March 2021 - ...</span>
-                            <p>Aristek Systems<br/>Performing various tasks: creating new functionality, writing tests and fixing bugs. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr/>
-            <div class="about-my-self">
-                <h1>About myself</h1>
-                <div class="about-my-self-container">
-                    <p>I'm responsible, сommitted, team player, flexible, sociable.</p>
-                    <p>Used to take part in state olympiads, conferences and scientific competitions in Astronomy. Ready to deep dive into new problems, meet challenges and acquire knowledge. Interested in sports (used to play in a footsal team) and music
-                        (graduated from a music school, played the accordion). University GPA is 8.75. </p>
-                    <p>Used to give classes in the area of mathematics and programming.</p>
-                    <p>&nbsp;</p>
-                </div>
+         <div class="right-column">
+            <p class="profile-summary"><strong>Ruby on Rails Engineer with 5 years of commercial experience</strong> developing scalable, high-performance web applications. Proficient in Ruby on Rails, PostgreSQL, MongoDB, Redis, Kafka, RabbitMQ, and Kubernetes. A responsible, committed, and team-oriented developer with a collaborative mindset and a passion for solving complex problems and optimizing software solutions. Experienced in Agile methodologies, leadership, and mentoring teams to deliver high-quality, maintainable solutions. Eager to join a forward-thinking team where I can contribute to impactful projects, leverage my technical expertise, and continue growing as a professional.</p>
+            <div class="experience">
+                <h2>Experience</h2>
+                <h3>SoftSwiss (11.2021 - Present)</h3>
+                <p>Developing and maintaining an Online Casino Platform, a modular system that provides functionalities such as player account management, payment service integration, game vendor management, reporting, and analytics. Primary focus on the Segmentor service, responsible for user segmentation and classification to enhance gaming experience and business efficiency.</p>
+                <p><strong>Responsibilities & Achievements:</strong></p>
+                <ul>
+                    <li>Refactored the legacy filter creation system, reducing the implementation time for new filters from 20 hours to 8 hours, streamlining front-end integration.</li>
+                    <li>Developed and deployed a high-performance service (Motion) processing 2,000 real-time events per second with automated actions based on predefined conditions.</li>
+                    <li>Built an API for real-time notifications with dynamic content using Liquid templates, enhancing personalized user engagement through the Motion service.</li>
+                    <li>Developed and successfully implemented the active/inactive users concept, leading to a 3x acceleration in Segmentor group calculations and a significant reduction in service maintenance costs.</li>
+                    <li>Introduced event mapping and atomic segmentation strategies, achieving a 4x acceleration in Segmentor processing speed while lowering service costs.</li>
+                    <li>Led the migration of a multi-tenant service, splitting it into multiple multi-tenant instances without downtime, ensuring uninterrupted operation.</li>
+                </ul>
+                <p><strong>Product Link:</strong> <a href="https://www.softswiss.com/casino-platform/">Casino Platform</a></p>
+
+                <h3>Aristek Systems (01.2021 - 11.2021)</h3>
+                 <p>Worked on an American educational platform (LMS/LXP), focusing on maintaining and supporting legacy code, improving test coverage, and assisting in API development. Contributed to the transition from a monolithic Ruby backend to a microservices-based architecture with a React frontend. Gained extensive experience working within Agile environments, utilizing Scrum and Kanban.</p>
+                <p><strong>Responsibilities & Achievements:</strong></p>
+                <ul>
+                    <li>Enhanced test coverage for legacy code by implementing comprehensive unit and integration tests using RSpec, leading to a reduction in production bugs and increased system reliability.</li>
+                    <li>Assisted in the API migration process, ensuring a seamless transition and integration between backend and frontend services.</li>
+                    <li>Developed backend features and enhancements for an educational portal.</li>
+                </ul>
+                <p><strong>Product Link:</strong> <a href="https://www.acceleratelearning.com/">Accelerate Learning</a></p>
+
+                <h3>iTechArt Group (05.2020 - 01.2021)</h3>
+                <p><strong>Responsibilities & Achievements:</strong></p>
+                <ul>
+                    <li>Completed an intensive Ruby on Rails training program, learning fundamental concepts and best practices.</li>
+                    <li>Successfully built and deployed a news portal project as a final assignment.</li>
+                </ul>
+                <p><strong>Project Link:</strong> <a href="https://github.com/berkovichpavel/news_portal_iTechArt">GitHub – News Portal</a></p>
             </div>
         </div>
-        <a class="anchor-href" href="#top">
-            <div class="anchor">
-                <h2>upstairs</h2>
-            </div>
-        </a>
     </div>
 </body>
 </html>

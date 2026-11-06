@@ -1,152 +1,730 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pavel Biarkovich - Ruby on Rails Developer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            width: 1000px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-wrap: wrap;
-            position: relative;
-        }
-        .left-column {
-            width: 35%;
-            padding-right: 20px;
-            border-right: 2px solid #d9534f;
-        }
-        .right-column {
-            width: 60%;
-            padding-left: 20px;
-            position: relative;
-        }
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .profile-header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-        }
-        h1, h2 {
-            color: #d9534f;
-        }
-        .contact-info h3, .skills h2, .language-proficiency h3, .education h3 {
-            color: #d9534f;
-        }
-        .skills h3 {
-            font-weight: bold;
-            font-size: 16px;
-            color: #333;
-        }
-        .skills h3:first-child {
-            font-size: 16px;
-        }
-        .experience h3 {
-          color: #d9534f;
-        }
-        .profile-summary {
-          font-size: 17px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pavel Biarkovich — Backend Team Lead</title>
+  <meta name="description" content="Pavel Biarkovich (Berkovich) — Backend Team Lead, Ruby on Rails, Kafka, event-driven microservices.">
+  <meta property="og:title" content="Pavel Biarkovich — Backend Team Lead">
+  <meta property="og:description" content="Ruby on Rails · Kafka · event-driven microservices · team of 15 · 9 high-load iGaming services · 300+ casino operators.">
+  <meta property="og:image" content="assets/avatar.jpg">
+  <link rel="icon" href="assets/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #14151a;
+      --body: #33353d;
+      --muted: #6c6f78;
+      --line: #e9e5e0;
+      --bg: #f7f5f2;
+      --card: #ffffff;
+      --night: #0f1014;
+      --ember-1: #ff6a3d;
+      --ember-2: #ef3b6e;
+      --ember-3: #8b5cf6;
+      --ember: linear-gradient(100deg, var(--ember-1) 0%, var(--ember-2) 50%, var(--ember-3) 100%);
+      --accent: #e0443a;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; background: var(--bg); color: var(--body);
+      font: 400 15px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-feature-settings: "cv11", "ss01";
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    b, strong { color: var(--ink); font-weight: 600; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .grad-text { background: var(--ember); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* ================= SCREEN ================= */
+    .paper { display: none; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(247,245,242,.82);
+      backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px);
+      border-bottom: 1px solid transparent; transition: border-color .2s;
+    }
+    .topbar.scrolled { border-bottom-color: var(--line); }
+    .topbar .wrap { display: flex; align-items: center; gap: 20px; height: 60px; }
+    .brand { font: 700 15px/1 "Inter Tight", sans-serif; color: var(--ink); text-decoration: none; letter-spacing: -.01em; margin-right: auto; }
+    .brand span { color: var(--muted); font-weight: 500; }
+    .nav { display: flex; gap: 18px; }
+    .nav a { font-size: 13.5px; color: var(--muted); text-decoration: none; padding: 6px 2px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; cursor: pointer; text-decoration: none;
+      font: 600 13.5px/1 "Inter", sans-serif; color: #fff; border: 0; border-radius: 999px;
+      padding: 11px 16px; background: var(--ember); transition: transform .15s, box-shadow .15s;
+    }
+    .btn svg { width: 15px; height: 15px; }
+
+    /* hero */
+    .hero {
+      position: relative; overflow: hidden; isolation: isolate;
+      margin-top: 18px; border-radius: 28px; background: var(--night); color: #eceef2;
+      padding: 44px 44px 30px;
+    }
+    .hero::before, .hero::after, .glow {
+      content: ""; position: absolute; z-index: -1; border-radius: 50%; filter: blur(60px);
+    }
+    .hero::before { width: 520px; height: 520px; right: -140px; top: -220px; opacity: .55; background: radial-gradient(closest-side, var(--ember-2), transparent); animation: drift1 18s ease-in-out infinite alternate; }
+    .hero::after  { width: 460px; height: 460px; right: 160px; top: 120px; opacity: .4; background: radial-gradient(closest-side, var(--ember-3), transparent); animation: drift2 22s ease-in-out infinite alternate; }
+    .glow { width: 380px; height: 380px; left: -120px; bottom: -220px; opacity: .35; background: radial-gradient(closest-side, var(--ember-1), transparent); animation: drift3 20s ease-in-out infinite alternate; }
+    @keyframes drift1 { to { transform: translate(-120px, 80px) scale(1.15); } }
+    @keyframes drift2 { to { transform: translate(140px, -60px) scale(.9); } }
+    @keyframes drift3 { to { transform: translate(160px, -40px) scale(1.2); } }
+    @media (prefers-reduced-motion: reduce) { .hero::before, .hero::after, .glow { animation: none; } html { scroll-behavior: auto; } }
+    @media (hover: hover) {
+      .nav a:hover { color: var(--ink); }
+      .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(239,59,110,.3); }
+      .links a:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.22); }
+      .case:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(20,21,26,.08); }
+      .award .t a:hover { background-size: 100% 1px; }
+    }
+
+    .hero-grid { display: grid; grid-template-columns: 1fr 260px; gap: 40px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; font: 600 12px/1 "Inter", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #ffb4a0; }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ember-1); box-shadow: 0 0 0 4px rgba(255,106,61,.2); }
+    .hero h1 { margin: 14px 0 6px; font: 800 clamp(40px, 6vw, 64px)/1 "Inter Tight", sans-serif; letter-spacing: -.035em; color: #fff; }
+    .hero .role { margin: 0 0 18px; font: 500 20px/1.3 "Inter Tight", sans-serif; color: #fff; }
+    .hero .role span { color: #a9adb8; }
+    .hero .lead { margin: 0; max-width: 640px; font-size: 16px; line-height: 1.65; color: #c9ccd4; }
+    .hero .lead b { color: #fff; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 0; padding: 0; list-style: none; }
+    .links a, .links span {
+      display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+      font-size: 13px; color: #e6e8ee; padding: 8px 12px; border-radius: 999px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      transition: background .15s, border-color .15s;
+    }
+    .links svg { width: 14px; height: 14px; opacity: .8; }
+
+    .portrait { position: relative; width: 260px; aspect-ratio: 4 / 5; border-radius: 22px; padding: 2px; background: var(--ember); box-shadow: 0 20px 60px rgba(239,59,110,.25); }
+    .portrait img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; border-radius: 20px; background: #1b1c20; }
+
+    .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-top: 36px; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
+    .stat { padding: 16px 18px; background: rgba(15,16,20,.62); }
+    .stat .v { font: 700 30px/1.05 "Inter Tight", sans-serif; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .stat .k { margin-top: 6px; font-size: 12.5px; line-height: 1.35; color: #a9adb8; }
+
+    /* sections */
+    .sec { padding: 64px 0 0; scroll-margin-top: 70px; }
+    .sec-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
+    .sec-head h2 { margin: 0; font: 700 30px/1.1 "Inter Tight", sans-serif; letter-spacing: -.02em; color: var(--ink); }
+    .sec-head p { margin: 0; color: var(--muted); font-size: 14px; max-width: 460px; }
+    .kicker { display: inline-block; margin-bottom: 8px; font: 700 11.5px/1 "Inter", sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+
+    /* timeline */
+    .timeline { --pad: 32px; --lx: 9px; --dot: 14px; position: relative; display: grid; gap: 14px; padding-left: var(--pad); }
+    .timeline::before { content: ""; position: absolute; left: calc(var(--lx) - 1px); top: 14px; bottom: 14px; width: 2px; border-radius: 2px; background: linear-gradient(180deg, var(--ember-1), var(--ember-3) 60%, var(--line)); }
+    .job { --bw: 1px; position: relative; background: var(--card); border: var(--bw) solid var(--line); border-radius: var(--radius); padding: 26px 30px; }
+    .job::before {
+      content: ""; position: absolute; box-sizing: border-box;
+      left: calc(var(--lx) - var(--pad) - var(--bw)); top: 39px; transform: translate(-50%, -50%);
+      width: var(--dot); height: var(--dot); border-radius: 50%; background: var(--card); border: 3px solid var(--ember-2);
+    }
+    .job.current { --bw: 1.5px; border-color: transparent; background: linear-gradient(var(--card), var(--card)) padding-box, var(--ember) border-box; box-shadow: 0 12px 34px rgba(239,59,110,.10); }
+    .job.current::before { background: var(--ember-2); box-shadow: 0 0 0 5px rgba(239,59,110,.15); }
+    .job.past::before { border-color: #c9c3bc; }
+    .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+    .job-head h3 { margin: 0; font: 700 21px/1.25 "Inter Tight", sans-serif; color: var(--ink); letter-spacing: -.01em; }
+    .job-head h3 span { color: var(--muted); font-weight: 500; }
+    .job-head .when { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .job .scope { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+    .job.past { padding: 20px 26px; }
+    .job.past::before { top: 31px; }
+    .job.past h3 { font-size: 18px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 4px; }
+    .chip { font-size: 12px; line-height: 1; padding: 7px 10px; border-radius: 999px; background: #f4f1ed; color: var(--body); border: 1px solid #ece7e1; }
+    .chip.hot { background: #fff0ec; border-color: #ffd9cf; color: #b8321f; font-weight: 600; }
+
+    ul.ticks { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    ul.ticks li { position: relative; padding-left: 24px; }
+    ul.ticks li::before { content: ""; position: absolute; left: 4px; top: .8em; width: 7px; height: 7px; border-radius: 50%; background: var(--ember-2); transform: translateY(-50%); }
+    .more { margin-top: 14px; }
+    .more summary { font-size: 13.5px; }
+
+    /* case studies */
+    .cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .case {
+      position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 26px 24px 18px; overflow: hidden; transition: transform .2s, box-shadow .2s;
+    }
+    .case::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--ember); }
+    .case.wide { grid-column: span 2; display: grid; grid-template-columns: 1.2fr 1fr; gap: 8px 32px; }
+    .case.wide .results { margin-top: 0; align-content: start; }
+    .case.wide details { grid-column: span 2; }
+    .case .label { font: 600 11px/1 "Inter", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+    .case h3 { margin: 10px 0 6px; font: 700 20px/1.2 "Inter Tight", sans-serif; color: var(--ink); letter-spacing: -.01em; }
+    .case p { margin: 0; font-size: 14.5px; }
+    .results { display: flex; gap: 24px; margin: 16px 0 6px; flex-wrap: wrap; }
+    .results .v { font: 700 24px/1.05 "Inter Tight", sans-serif; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .results .k { margin-top: 4px; font-size: 12px; color: var(--muted); line-height: 1.3; }
+    details { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 4px; }
+    summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 4px 0; font: 600 13px/1.4 "Inter", sans-serif; color: var(--ink); -webkit-tap-highlight-color: transparent; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; background: #f4f1ed; font-weight: 600; }
+    details[open] summary::after { content: "–"; }
+    details ul { margin: 10px 0 4px; padding-left: 18px; font-size: 14px; }
+    details li { margin: 5px 0; }
+    details li::marker { color: var(--accent); }
+
+    /* bottom grid */
+    .tri { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+    .side { display: grid; gap: 16px; }
+    .skill-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .skill-group + .skill-group { margin-top: 0; }
+    .box { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; scroll-margin-top: 80px; }
+    .box h3 { margin: 0 0 14px; font: 700 18px/1.2 "Inter Tight", sans-serif; color: var(--ink); }
+    .skill-group .l { font-size: 11.5px; font-weight: 600; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 7px; }
+    .skill-group .chips { margin: 0; }
+    .award { display: grid; grid-template-columns: 50px 1fr; gap: 12px; align-items: start; }
+    .award + .award { margin-top: 16px; }
+    .medal { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 14px; font: 800 14px/1 "Inter Tight", sans-serif; color: #fff; background: var(--ember); }
+    .medal.alt { background: var(--ink); font-size: 12px; }
+    .award .t { font-weight: 600; color: var(--ink); line-height: 1.35; }
+    .award .t a { text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .2s; }
+    .award .d { font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+    .kv { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+    .kv:last-child { border-bottom: 0; }
+    .kv span:last-child { color: var(--muted); text-align: right; }
+    .mini { margin-top: 22px; }
+    .note { font-size: 14px; color: var(--body); margin: 0; }
+
+    footer.site { padding: 56px 0 40px; color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+    /* tablet landscape / small laptop */
+    @media (max-width: 960px) {
+      .brand span { display: none; }
+      .nav { gap: 14px; }
+      .hero { padding: 36px 32px 26px; }
+      .hero-grid { grid-template-columns: 1fr 210px; gap: 28px; }
+      .portrait { width: 210px; }
+      .stat { padding: 14px 14px; }
+      .stat .v { font-size: 26px; }
+      .case.wide { grid-template-columns: 1fr; }
+    }
+    /* large phones / small tablets */
+    @media (max-width: 720px) {
+      .nav { display: none; }
+      .cases, .tri { grid-template-columns: 1fr; }
+      .case.wide { grid-column: auto; }
+      .case.wide details { grid-column: auto; }
+      .tri .skill-grid { grid-template-columns: repeat(2, 1fr); gap: 16px 24px; }
+    }
+    @media (max-width: 680px) {
+      .wrap { padding: 0 16px; }
+      .hero { padding: 28px 20px 20px; border-radius: 22px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 26px; }
+      .portrait { width: 190px; order: -1; }
+      .hero .role { font-size: 17px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:last-child { grid-column: span 2; }
+      .stat .v { font-size: 26px; }
+      .timeline { --pad: 22px; --lx: 6px; --dot: 12px; }
+      .job, .job.past { padding: 20px 18px; }
+      .job::before { top: 33px; }
+      .job.past::before { top: 31px; }
+      .sec { padding-top: 48px; }
+      .sec-head { flex-direction: column; align-items: start; }
+      .sec-head h2 { font-size: 26px; }
+      .btn { padding: 10px 13px; }
+      .tri .skill-grid { grid-template-columns: 1fr; }
+      .results { gap: 18px; }
+      .results .v { font-size: 22px; }
+    }
+    /* small phones (iPhone SE, 320–360px) */
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 34px; }
+      .hero .lead { font-size: 15px; }
+      .portrait { width: 160px; }
+      .stat { padding: 12px; }
+      .stat .v { font-size: 22px; }
+      .btn { padding: 9px 11px; font-size: 12.5px; }
+      .job-head h3 { font-size: 18px; }
+      .case { padding: 22px 18px 14px; }
+      .timeline { --pad: 18px; --lx: 5px; --dot: 11px; }
+      .job, .job.past { padding: 18px 14px; }
+      ul.ticks li { padding-left: 18px; }
+      ul.ticks li::before { left: 2px; }
+      .chip { font-size: 11.5px; padding: 6px 9px; }
+      .eyebrow { letter-spacing: .08em; font-size: 11px; }
+      .box { padding: 20px 16px; }
+    }
+
+    /* ================= PRINT (A4, one page) ================= */
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { background: #fff; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .screen { display: none !important; }
+      .paper { display: block; }
+    }
+    .paper {
+      --p-ink: #111214; --p-body: #2b2d31; --p-muted: #6e7178; --p-rule: #e3e4e6; --z: .87;
+      zoom: var(--z);
+      width: calc(210mm / var(--z)); height: calc(297mm / var(--z)); overflow: hidden;
+      padding: 12mm 14mm 10mm; background: #fff; color: var(--p-body);
+      font: 400 13px/1.47 "Inter", system-ui, sans-serif;
+    }
+    .paper a { text-decoration: none; color: inherit; }
+    .paper b { color: var(--p-ink); font-weight: 600; }
+    .p-head { display: grid; grid-template-columns: 1fr 104px; gap: 24px; align-items: start; }
+    .p-head h1 { margin: 0; font: 700 34px/1.05 "Inter Tight", sans-serif; letter-spacing: -.025em; color: var(--p-ink); }
+    .p-title { margin: 6px 0 0; font: 500 15px/1.3 "Inter Tight", sans-serif; color: var(--p-ink); }
+    .p-title span { color: var(--p-muted); }
+    .p-contacts { margin: 9px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; font-size: 12px; color: var(--p-muted); }
+    .p-contacts li:not(:last-child)::after { content: "·"; margin: 0 8px; color: #a0a3a9; }
+    .p-contacts a { color: var(--p-body); }
+    .paper .p-contacts li { padding-left: 0; margin: 0; }
+    .paper .p-contacts li::before { display: none; }
+    .p-summary { margin: 10px 0 0; font-size: 13px; }
+    .p-photo { width: 104px; height: 139px; object-fit: cover; object-position: 50% 30%; border-radius: 6px; display: block; }
+    .p-accent { height: 3px; margin-top: 12px; border-radius: 3px; background: var(--ember); }
+    .p-facts { display: grid; grid-template-columns: repeat(5, 1fr); padding: 9px 0; border-bottom: 1px solid var(--p-rule); }
+    .p-fact { padding: 0 12px; border-left: 1px solid var(--p-rule); }
+    .p-fact:first-child { padding-left: 0; border-left: 0; }
+    .p-fact .v { font: 600 20px/1.1 "Inter Tight", sans-serif; letter-spacing: -.02em; color: var(--p-ink); font-variant-numeric: tabular-nums; }
+    .p-fact .k { margin-top: 2px; font-size: 11px; color: var(--p-muted); line-height: 1.3; }
+    .p-sec { display: grid; grid-template-columns: 112px 1fr; gap: 0 14px; padding-top: 10px; }
+    .p-sec + .p-sec { border-top: 1px solid var(--p-rule); margin-top: 10px; }
+    .p-sec h2 { margin: 0; padding-top: 2px; font: 600 10.5px/1.3 "Inter", sans-serif; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+    .p-role { margin-bottom: 8px; }
+    .p-role:last-child { margin-bottom: 0; }
+    .p-role-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .p-role-title { font: 600 14px/1.3 "Inter Tight", sans-serif; color: var(--p-ink); }
+    .p-role-title span { font-weight: 500; color: var(--p-muted); }
+    .p-dates { font-size: 11.5px; color: var(--p-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .p-scope { margin: 1px 0 0; font-size: 12px; color: var(--p-muted); }
+    .paper ul { margin: 3px 0 0; padding: 0; list-style: none; }
+    .paper li { position: relative; padding-left: 12px; margin: 2.5px 0; break-inside: avoid; }
+    .paper li::before { content: ""; position: absolute; left: 0; top: .66em; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+    .p-rows { margin: 0; display: grid; grid-template-columns: 92px 1fr; gap: 3px 12px; font-size: 12.5px; }
+    .p-rows dt { font-weight: 500; color: var(--p-ink); }
+    .p-rows dd { margin: 0; }
+    .p-rows .m { color: var(--p-muted); }
+    .p-two { display: grid; grid-template-columns: 1.5fr 1fr; gap: 0 24px; }
+    .p-langs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 14px; }
+    .p-langs > div { display: flex; align-items: baseline; gap: 8px; padding-left: 12px; border-left: 2px solid var(--p-rule); }
+    .p-langs > div:first-child { padding-left: 0; border-left: 0; }
+    .p-langs .n { font: 600 13px/1.3 "Inter Tight", sans-serif; color: var(--p-ink); }
+    .p-langs .l { font-size: 12px; color: var(--p-muted); }
+    .p-skills { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+    .p-skills .p-rows { grid-template-columns: 74px 1fr; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="left-column">
-            <div class="profile-header">
-                <img src="font/my_photo.jpg" alt="Pavel Biarkovich">
-                <div>
-                    <h1>Pavel Biarkovich</h1>
-                    <h2>Ruby on Rails Engineer</h2>
-                </div>
-            </div>
-            <div class="contact-info">
-                <h2>Contact</h2>
-                <p><strong>Email:</strong> <a href="mailto:berkovich.pasha@gmail.com">berkovich.pasha@gmail.com</a></p>
-                <p><strong>Phone:</strong> (+48) 571-920-420</p>
-                <p><strong>LinkedIn:</strong> <a href="#">Pavel Berkovich</a></p>
-            </div>
-            <div class="language-proficiency">
-                <h2>Language Proficiency</h2>
-                <p><strong>Russian:</strong> Native</p>
-                <p><strong>English:</strong> Intermediate</p>
-            </div>
-            <div class="skills">
-                <h2>Skills</h2>
-                <h3>Programming language & framework:</h3>
-                <p>Ruby, Ruby on Rails.</p>
-                <h3>Message brokers:</h3>
-                <p>Kafka, RabbitMQ.</p>
-                <h3>Databases:</h3>
-                <p>MongoDB, PostgreSQL, Redis.</p>
-                <h3>Testing:</h3>
-                <p>RSpec, FactoryBot, Capybara.</p>
-                <h3>DevOps:</h3>
-                <p>Docker, Docker Compose, Kubernetes, Jenkins.</p>
-                <h3>Monitoring systems:</h3>
-                <p>Datadog, Sentry, Prometheus, Grafana, Kibana.</p>
-                <h3>Source control systems:</h3>
-                <p>Git, GitHub, GitLab.</p>
-                <h3>Project management methodologies:</h3>
-                <p>Agile, Scrum, Kanban.</p>
-            </div>
-            <div class="education">
-                <h2>Education</h2>
-                <p><strong>Bachelor of Science in Applied Mathematics and Computer Science</strong></p>
-                <p>Belarusian State University (2016 - 2020)</p>
-            </div>
-        </div>
-         <div class="right-column">
-            <p class="profile-summary"><strong>Ruby on Rails Engineer with 5 years of commercial experience</strong> developing scalable, high-performance web applications. Proficient in Ruby on Rails, PostgreSQL, MongoDB, Redis, Kafka, RabbitMQ, and Kubernetes. A responsible, committed, and team-oriented developer with a collaborative mindset and a passion for solving complex problems and optimizing software solutions. Experienced in Agile methodologies, leadership, and mentoring teams to deliver high-quality, maintainable solutions. Eager to join a forward-thinking team where I can contribute to impactful projects, leverage my technical expertise, and continue growing as a professional.</p>
-            <div class="experience">
-                <h2>Experience</h2>
-                <h3>SoftSwiss (11.2021 - Present)</h3>
-                <p>Developing and maintaining an Online Casino Platform, a modular system that provides functionalities such as player account management, payment service integration, game vendor management, reporting, and analytics. Primary focus on the Segmentor service, responsible for user segmentation and classification to enhance gaming experience and business efficiency.</p>
-                <p><strong>Responsibilities & Achievements:</strong></p>
-                <ul>
-                    <li>Refactored the legacy filter creation system, reducing the implementation time for new filters from 20 hours to 8 hours, streamlining front-end integration.</li>
-                    <li>Developed and deployed a high-performance service (Motion) processing 2,000 real-time events per second with automated actions based on predefined conditions.</li>
-                    <li>Built an API for real-time notifications with dynamic content using Liquid templates, enhancing personalized user engagement through the Motion service.</li>
-                    <li>Developed and successfully implemented the active/inactive users concept, leading to a 3x acceleration in Segmentor group calculations and a significant reduction in service maintenance costs.</li>
-                    <li>Introduced event mapping and atomic segmentation strategies, achieving a 4x acceleration in Segmentor processing speed while lowering service costs.</li>
-                    <li>Led the migration of a multi-tenant service, splitting it into multiple multi-tenant instances without downtime, ensuring uninterrupted operation.</li>
-                </ul>
-                <p><strong>Product Link:</strong> <a href="https://www.softswiss.com/casino-platform/">Casino Platform</a></p>
 
-                <h3>Aristek Systems (01.2021 - 11.2021)</h3>
-                 <p>Worked on an American educational platform (LMS/LXP), focusing on maintaining and supporting legacy code, improving test coverage, and assisting in API development. Contributed to the transition from a monolithic Ruby backend to a microservices-based architecture with a React frontend. Gained extensive experience working within Agile environments, utilizing Scrum and Kanban.</p>
-                <p><strong>Responsibilities & Achievements:</strong></p>
-                <ul>
-                    <li>Enhanced test coverage for legacy code by implementing comprehensive unit and integration tests using RSpec, leading to a reduction in production bugs and increased system reliability.</li>
-                    <li>Assisted in the API migration process, ensuring a seamless transition and integration between backend and frontend services.</li>
-                    <li>Developed backend features and enhancements for an educational portal.</li>
-                </ul>
-                <p><strong>Product Link:</strong> <a href="https://www.acceleratelearning.com/">Accelerate Learning</a></p>
+<!-- ============================================================
+     SCREEN VERSION (interactive)
+     ============================================================ -->
+<div class="screen">
 
-                <h3>iTechArt Group (05.2020 - 01.2021)</h3>
-                <p><strong>Responsibilities & Achievements:</strong></p>
-                <ul>
-                    <li>Completed an intensive Ruby on Rails training program, learning fundamental concepts and best practices.</li>
-                    <li>Successfully built and deployed a news portal project as a final assignment.</li>
-                </ul>
-                <p><strong>Project Link:</strong> <a href="https://github.com/berkovichpavel/news_portal_iTechArt">GitHub – News Portal</a></p>
-            </div>
-        </div>
+  <div class="topbar" id="topbar">
+    <div class="wrap">
+      <a class="brand" href="#top">Pavel Biarkovich <span>· Backend Team Lead</span></a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#experience">Experience</a>
+        <a href="#work">Selected work</a>
+        <a href="#skills">Skills</a>
+        <a href="#recognition">Recognition</a>
+      </nav>
+      <a class="btn" href="Pavel_Biarkovich_CV.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download PDF
+      </a>
     </div>
+  </div>
+
+  <main class="wrap" id="top">
+
+    <!-- HERO -->
+    <header class="hero">
+      <span class="glow" aria-hidden="true"></span>
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Backend · Ruby on Rails · Kafka</span>
+          <h1>Pavel Biarkovich</h1>
+          <p class="role">Backend Team Lead <span>· high-load iGaming microservices</span></p>
+          <p class="lead">
+            6+ years in Ruby on Rails. At <b>SOFTSWISS</b> I lead a cross-functional team of <b>15</b> that owns
+            <b>9 event-driven iGaming microservices</b> that serve <b>300+ online casino operators</b> and consume
+            <b>8.5k Kafka events/s</b>. Before that I spent four years developing the player segmentation service
+            and its marketing-automation engine. Now I handle planning, mentoring and releases for the team.
+          </p>
+          <ul class="links">
+            <li><span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Poznań, Poland</span></li>
+            <li><a href="mailto:berkovich.pasha@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              berkovich.pasha@gmail.com</a></li>
+            <li><a href="tel:+48571920420">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+              +48 571 920 420</a></li>
+            <li><a href="https://www.linkedin.com/in/pavel-berkovich/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg>
+              LinkedIn</a></li>
+            <li><a href="https://github.com/berkovichpavel" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+              GitHub</a></li>
+          </ul>
+        </div>
+        <div class="portrait">
+          <img src="assets/portrait.jpg" alt="Pavel Biarkovich" width="720" height="900">
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="v grad-text">15</div><div class="k">people in my team</div></div>
+        <div class="stat"><div class="v grad-text">9</div><div class="k">production services owned</div></div>
+        <div class="stat"><div class="v grad-text">300+</div><div class="k">casino operators served</div></div>
+        <div class="stat"><div class="v grad-text">8.5k/s</div><div class="k">Kafka events consumed</div></div>
+        <div class="stat"><div class="v grad-text">6+ yrs</div><div class="k">with Ruby on Rails</div></div>
+      </div>
+    </header>
+
+    <!-- EXPERIENCE -->
+    <section class="sec" id="experience">
+      <div class="sec-head">
+        <div><span class="kicker grad-text">Career</span><h2>Experience</h2></div>
+      </div>
+
+      <div class="timeline">
+
+        <article class="job current">
+          <div class="job-head"><h3>Backend Team Lead <span>· SOFTSWISS</span></h3><span class="when">2026 — Present</span></div>
+          <p class="scope">9 services: player segmentation, bonus system, tournaments, jackpots, real-time notifications and WebSocket gateway, product store, player chat, customer engagement, integrations</p>
+          <div class="chips"><span class="chip hot">7 backend · 3 frontend · 3 QA · 2 AQA</span><span class="chip">Roadmap &amp; sprint planning</span><span class="chip">System design reviews</span><span class="chip">Releases</span><span class="chip">Incident management</span><span class="chip">1:1s &amp; mentoring</span></div>
+          <ul class="ticks">
+            <li>Lead a <b>cross-functional team of 15</b> that owns 9 production microservices, and am the <b>direct manager of its 5 backend engineers</b>: roadmap and sprint planning, system design reviews, releases and incident management.</li>
+            <li><b>People:</b> regular 1:1s, onboarding plans for new hires, mentoring through code and design reviews.</li>
+            <li><b>Code ownership:</b> set up CODEOWNERS and a service-to-team map, so every repository, Airflow DAG and alert has an owner and reviews are routed automatically.</li>
+            <li><b>Code-review bot</b> (TypeScript, GitLab + Slack), main developer: least-loaded reviewer auto-assignment, a working-hours SLA with escalation to the lead, an optional green-pipeline gate, and team reports on time to first review and to merge. Adopted by <b>8 teams and 47 reviewers</b>; added AI code review (CodeRabbit, Cursor) to 5 repositories.</li>
+            <li><b>Onboarding docs:</b> write interactive guides to the team's services with architecture diagrams, step-by-step event simulators, debugging playbooks and quizzes. New engineers find them easier to learn from than static wiki pages.</li>
+            <li><b>Automation:</b> together with the team, moved onboarding of new casino clients to the real-time notification service from a manual runbook to an Airflow pipeline; release notes are generated with LLMs.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head"><h3>Senior Ruby on Rails Engineer <span>· SOFTSWISS</span></h3><span class="when">Nov 2021 — 2026</span></div>
+          <p class="scope">Real-time player segmentation and marketing-automation engine for an iGaming B2B platform · multi-tenant, 300+ casino operators</p>
+          <div class="chips"><span class="chip">Ruby 3.4</span><span class="chip">Rails 7</span><span class="chip">Kafka · Karafka</span><span class="chip">Sidekiq</span><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Kubernetes</span></div>
+          <ul class="ticks">
+            <li><b>Marketing-automation engine</b> (rules that react to player actions in real time): worked on it from the first version in 2022. A trigger (40+ types, including schedules and per-bet triggers) starts a workflow, conditions (128 types) check the player, and actions grant bonuses and comp points, set tags or send notifications. I implemented the first actions, workflow validations and trigger decomposition, and later helped scale it and roll it out to brands. <b>2k+ events/s</b>; today <b>5k+ live workflows</b>.</li>
+            <li><b>Per-bet triggers</b>, for example a bonus right after a big win: planned the design and coordinated the team that built it. The game-round stream is matched against pre-compiled trigger matchers, with in-process LRU/TTL caches invalidated over Redis pub/sub. <b>~2.75 s</b> from bet to action.</li>
+            <li><b>Scheduled waits in workflows</b> (“wait 3 days, then send the offer”), implemented: weekly range partitions in PostgreSQL next to MongoDB, a delay state machine and a cron scheduler that bulk-enqueues Sidekiq jobs in 30-second buckets.</li>
+            <li><b>Active/inactive players:</b> stopped recalculating segments for inactive players; average recalculation time <b>−54%</b>, <b>~300 GB</b> of cold data out of the hot path.</li>
+            <li><b>Event decomposition:</b> split coarse player-update events into fine-grained ones, so only dependent segments recalculate: <b>−31%</b> recalculation events.</li>
+            <li><b>Service split:</b> took part in splitting the multi-tenant service into 3 independent production stacks and migrating casinos between them in batches, without service-wide downtime.</li>
+            <li><b>Filters:</b> reworked how segmentation filters are built and moved 70+ of them out of the platform monolith. A new filter now takes <b>6 h instead of 20 h</b> and <b>one developer instead of two</b>, and ships without a platform release.</li>
+            <li>Upgrades and maintenance: Rails 6.1 → 7.0, Mongoid 8, Karafka 2.5 tuning, bigint user IDs, Kafka cluster migration, MongoDB index tuning on 100M+ row collections.</li>
+          </ul>
+        </article>
+
+        <article class="job past">
+          <div class="job-head"><h3>Ruby on Rails Developer <span>· Aristek Systems</span></h3><span class="when">Jan 2021 — Nov 2021</span></div>
+          <p class="scope">STEMscopes, a US K-12 STEM learning platform by <a href="https://www.acceleratelearning.com/" target="_blank" rel="noopener">Accelerate Learning</a>, used by 6M+ students and 600K+ teachers in all 50 states</p>
+          <ul class="ticks">
+            <li>Worked on REST APIs while the team split a large Rails monolith into services with a React frontend.</li>
+            <li>Developed and maintained backend features for teachers and students in a distributed Scrum team with US product owners.</li>
+            <li>Covered legacy code with RSpec unit and integration tests, so the team could refactor it safely.</li>
+          </ul>
+        </article>
+
+        <article class="job past">
+          <div class="job-head"><h3>Junior Ruby on Rails Developer <span>· iTechArt Group</span></h3><span class="when">May 2020 — Jan 2021</span></div>
+          <p class="scope">Ruby on Rails trainee program, then first commercial experience</p>
+          <ul class="ticks">
+            <li>Built and deployed a <a href="https://github.com/berkovichpavel/news_portal_iTechArt" target="_blank" rel="noopener">news portal</a> (231 commits, 27 PRs): four roles with an editorial workflow from correspondent to editor, RSS import and export, email digests by category, tag or region, comments and ratings, view analytics and charted admin reports.</li>
+            <li>Rails 6, PostgreSQL, Sidekiq and cron jobs, Devise with GitHub OAuth, CanCanCan; tested with RSpec, Capybara and FactoryBot, N+1 queries caught with Bullet.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section class="sec" id="work">
+      <div class="sec-head">
+        <div><span class="kicker grad-text">Case studies</span><h2>Selected work</h2></div>
+        <p>Open “How it works” for the technical details.</p>
+      </div>
+
+      <div class="cases">
+        <article class="case wide">
+          <div>
+            <span class="label">Leadership · 2026</span>
+            <h3>Team practices</h3>
+            <p>Code ownership, a review bot that spreads reviews evenly and tracks review time, and interactive onboarding docs for the team's services.</p>
+          </div>
+          <div class="results">
+            <div><div class="v grad-text">8</div><div class="k">teams use the review bot</div></div>
+            <div><div class="v grad-text">47</div><div class="k">reviewers</div></div>
+            <div><div class="v grad-text">9</div><div class="k">services, each with an owner</div></div>
+          </div>
+          <details>
+            <summary>How it works</summary>
+            <ul>
+              <li>CODEOWNERS and a service-to-team map: every repository, DAG and alert has an owner; reviews route automatically.</li>
+              <li>Code-review bot: least-loaded assignment over a 30-day window with a soft cap on open reviews, a working-hours SLA with escalation to the lead, and reports on time to first review and to merge.</li>
+              <li>Interactive onboarding docs with simulators and quizzes, so a new engineer can learn a service on their own.</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="case">
+          <span class="label">Developer · since 2022</span>
+          <h3>Real-time marketing automation</h3>
+          <p>A workflow engine that reacts to player events in real time: a trigger starts a workflow, conditions check the player, and actions grant bonuses, add tags or send notifications.</p>
+          <div class="results">
+            <div><div class="v grad-text">2k+/s</div><div class="k">events processed</div></div>
+            <div><div class="v grad-text">5k+</div><div class="k">live workflows</div></div>
+            <div><div class="v grad-text">128</div><div class="k">condition types</div></div>
+          </div>
+          <details>
+            <summary>How it works</summary>
+            <ul>
+              <li>Karafka consumers on ~30 platform event topics build a player profile with 100+ fields.</li>
+              <li>40+ trigger types, including schedules and per-bet triggers; actions for bonuses, comp points, tags, groups, notifications, lottery tickets and delays.</li>
+              <li>Actions are published to Kafka from Sidekiq jobs with retries, in batches of 1,000 players; validations guard node count and loops.</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="case">
+          <span class="label">Design &amp; coordination · 2025 — 2026</span>
+          <h3>A trigger on every bet</h3>
+          <p>Lets operators react to each individual bet (for example, a bonus after a big win) instead of waiting for a periodic recalculation.</p>
+          <div class="results">
+            <div><div class="v grad-text">~2.75 s</div><div class="k">from bet to action</div></div>
+            <div><div class="v grad-text">3</div><div class="k">production stacks</div></div>
+          </div>
+          <details>
+            <summary>How it works</summary>
+            <ul>
+              <li>A batch Kafka consumer on game-round events groups bets per casino and matches them against pre-compiled trigger matchers.</li>
+              <li>In-process LRU caches with TTL hold compiled workflows and per-player counters; counters are flushed every 30 s and on eviction, rebalance or shutdown.</li>
+              <li>Cache invalidation is broadcast over Redis pub/sub; guardrails limit trigger count and minimum bet.</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="case">
+          <span class="label">Implemented · 2025</span>
+          <h3>Scheduled waits in workflows</h3>
+          <p>“Wait 3 days, then send the offer.” Pauses a workflow for each player and resumes it within a 30-second scheduling window.</p>
+          <div class="results">
+            <div><div class="v grad-text">30 s</div><div class="k">scheduling buckets</div></div>
+            <div><div class="v grad-text">10k</div><div class="k">jobs per bulk push</div></div>
+          </div>
+          <details>
+            <summary>How it works</summary>
+            <ul>
+              <li>Added PostgreSQL to a MongoDB service: weekly range partitions, created ahead and rotated by cron.</li>
+              <li>State machine: waiting → queued → started → finished / skipped / failed.</li>
+              <li>A cron job every 5 minutes picks up overdue delays and pre-enqueues the next 10 minutes via Sidekiq bulk push; a failure monitor watches for stuck delays.</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="case">
+          <span class="label">Implemented · 2024 — 2025</span>
+          <h3>Active / inactive players</h3>
+          <p>Stopped recalculating segments for players who are no longer active, without changing results for anyone who is. I presented it at the SOFTSWISS internal conference.</p>
+          <div class="results">
+            <div><div class="v grad-text">−54%</div><div class="k">average recalculation time</div></div>
+            <div><div class="v grad-text">~300 GB</div><div class="k">out of the hot path</div></div>
+          </div>
+          <details>
+            <summary>How it works</summary>
+            <ul>
+              <li>Separate collections for inactive players; a player is reactivated on the first relevant event.</li>
+              <li>Rolled out casino by casino and measured on one production stack before going wide.</li>
+            </ul>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS / RECOGNITION / EDUCATION -->
+    <section class="sec" id="skills">
+      <div class="tri">
+        <div class="box skills">
+          <h3>Skills</h3>
+          <div class="skill-grid">
+            <div class="skill-group"><div class="l">Languages &amp; frameworks</div><div class="chips"><span class="chip">Ruby</span><span class="chip">Ruby on Rails</span><span class="chip">Sidekiq</span><span class="chip">Karafka</span><span class="chip">Go</span><span class="chip">TypeScript</span></div></div>
+            <div class="skill-group"><div class="l">Message brokers</div><div class="chips"><span class="chip">Kafka</span><span class="chip">RabbitMQ</span></div></div>
+            <div class="skill-group"><div class="l">Databases</div><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">ClickHouse</span></div></div>
+            <div class="skill-group"><div class="l">Testing</div><div class="chips"><span class="chip">RSpec</span><span class="chip">FactoryBot</span><span class="chip">Capybara</span></div></div>
+            <div class="skill-group"><div class="l">DevOps</div><div class="chips"><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Helm</span><span class="chip">GitLab CI/CD</span><span class="chip">Jenkins</span><span class="chip">Vault</span><span class="chip">Airflow</span></div></div>
+            <div class="skill-group"><div class="l">Monitoring</div><div class="chips"><span class="chip">Datadog</span><span class="chip">Sentry</span><span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">Kibana</span></div></div>
+            <div class="skill-group"><div class="l">Architecture</div><div class="chips"><span class="chip">Event-driven microservices</span><span class="chip">System design</span><span class="chip">Multi-tenant SaaS</span></div></div>
+            <div class="skill-group"><div class="l">Ways of working</div><div class="chips"><span class="chip">Agile</span><span class="chip">Scrum</span><span class="chip">Kanban</span><span class="chip">Incident management</span><span class="chip">Git · GitLab · GitHub</span></div></div>
+            <div class="skill-group"><div class="l">AI-assisted engineering</div><div class="chips"><span class="chip">Claude Code</span><span class="chip">Cursor</span><span class="chip">CodeRabbit</span></div></div>
+          </div>
+        </div>
+
+        <div class="side">
+        <div class="box" id="recognition">
+          <h3>Recognition</h3>
+          <div class="award"><div class="medal">1st</div><div><div class="t"><a href="https://www.softswiss.com/news/ai-hackathon-2026/" target="_blank" rel="noopener">SOFTSWISS AI Hackathon 2026</a></div><div class="d">Team Alpine Black Goose: an AI-driven SDLC 2.0 tool. 34 teams, 21 countries.</div></div></div>
+          <div class="award"><div class="medal">1st</div><div><div class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7396347704097828864/" target="_blank" rel="noopener">SOFTSWISS Hackathon 2025</a></div><div class="d">PvP battles for casino players: a 48-hour multiplayer prototype built with WebRTC and AI tooling.</div></div></div>
+          <div class="award"><div class="medal alt">Talk</div><div><div class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7355708990917435395/" target="_blank" rel="noopener">“Hit the Target. Smarter Recalculations.”</a></div><div class="d">SOFTSWISS internal conference, 2025. Also a technical deep dive on the segmentation service, 2024.</div></div></div>
+        </div>
+
+        <div class="box">
+          <h3>Education</h3>
+          <div><span style="font-weight:600;color:var(--ink)">Belarusian State University</span><span style="font-size:13px;color:var(--muted);white-space:nowrap"> · 2016–2020</span></div>
+          <div style="font-size:13px;color:var(--muted)">Bachelor of Science in Applied Mathematics &amp; Computer Science</div>
+          <div class="mini">
+            <h3>Languages</h3>
+            <div class="kv"><span>Russian</span><span>Native</span></div>
+            <div class="kv"><span>English</span><span>Intermediate</span></div>
+            <div class="kv"><span>Polish</span><span>Intermediate (B1)</span></div>
+          </div>
+          <div class="mini">
+            <h3>Beyond code</h3>
+            <p class="note">IBA-certified bartender.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site">
+      <span>© 2026 Pavel Biarkovich</span>
+      <span><a href="Pavel_Biarkovich_CV.pdf" download>Download the one-page PDF</a></span>
+    </footer>
+  </main>
+</div>
+
+<!-- ============================================================
+     PRINT VERSION (A4, one page) — shown only when printing
+     ============================================================ -->
+<div class="paper" aria-hidden="true">
+  <div class="p-head">
+    <div>
+      <h1>Pavel Biarkovich</h1>
+      <p class="p-title">Backend Team Lead <span>· Ruby on Rails · Kafka · High-Load iGaming Microservices</span></p>
+      <ul class="p-contacts">
+        <li>Poznań, Poland</li>
+        <li><a href="mailto:berkovich.pasha@gmail.com">berkovich.pasha@gmail.com</a></li>
+        <li><a href="tel:+48571920420">+48 571 920 420</a></li>
+        <li><a href="https://www.linkedin.com/in/pavel-berkovich/">linkedin.com/in/pavel-berkovich</a></li>
+        <li><a href="https://berkovichpavel.github.io/">berkovichpavel.github.io</a></li>
+      </ul>
+      <p class="p-summary">Backend Team Lead with 6+ years in Ruby on Rails. At SOFTSWISS (B2B iGaming platform) I lead a team of 15 and directly manage its 5 backend engineers; we own 9 event-driven microservices that serve 300+ online casino operators and consume 8.5k Kafka events/s. Before that, 4 years on the real-time player segmentation and marketing-automation engine.</p>
+    </div>
+    <img class="p-photo" src="assets/avatar.jpg" alt="">
+  </div>
+
+  <div class="p-accent"></div>
+  <div class="p-facts">
+    <div class="p-fact"><div class="v">15</div><div class="k">people in my team</div></div>
+    <div class="p-fact"><div class="v">9</div><div class="k">production services</div></div>
+    <div class="p-fact"><div class="v">300+</div><div class="k">casino operators served</div></div>
+    <div class="p-fact"><div class="v">8.5k/s</div><div class="k">Kafka events consumed</div></div>
+    <div class="p-fact"><div class="v">6+ yrs</div><div class="k">with Ruby on Rails</div></div>
+  </div>
+
+  <section class="p-sec">
+    <h2>Experience</h2>
+    <div>
+      <div class="p-role">
+        <div class="p-role-head"><div class="p-role-title">Backend Team Lead <span>· SOFTSWISS</span></div><div class="p-dates">2026 — Present</div></div>
+        <p class="p-scope">Player segmentation, bonus system, tournaments, jackpots, notifications + 4 more services</p>
+        <ul>
+          <li>Lead a cross-functional team of 15 owning 9 microservices; direct manager of 5 backend engineers: roadmap and sprint planning, system design reviews, releases, incidents, 1:1s, mentoring.</li>
+          <li>Set up code ownership (CODEOWNERS, service-to-team map); main developer of a code-review bot (GitLab + Slack): least-loaded auto-assignment, working-hours SLA with escalation, time-to-review and time-to-merge reports; adopted by <b>8</b> teams, <b>47</b> reviewers; AI code review in 5 repositories.</li>
+          <li>Write interactive onboarding docs for the team's services (simulators, quizzes); with the team, automated new client onboarding with Airflow.</li>
+        </ul>
+      </div>
+      <div class="p-role">
+        <div class="p-role-head"><div class="p-role-title">Senior Ruby on Rails Engineer <span>· SOFTSWISS</span></div><div class="p-dates">Nov 2021 — 2026</div></div>
+        <p class="p-scope">Real-time player segmentation service and its marketing-automation engine (multi-tenant)</p>
+        <ul>
+          <li>Worked on the real-time marketing-automation engine from its first version in 2022: triggers (40+ types) → conditions (128 types) → bonus, tag or notification. <b>2k+</b> events/s; now <b>5k+</b> live workflows.</li>
+          <li>Planned the design of per-bet triggers (e.g. bonus right after a big win) and coordinated the team: game-round stream matched against pre-compiled trigger matchers, LRU/TTL caches invalidated via Redis pub/sub, <b>~2.75 s</b> bet to action.</li>
+          <li>Implemented scheduled waits in workflows: weekly-partitioned PostgreSQL next to MongoDB and Sidekiq bulk scheduling in 30-second buckets.</li>
+          <li>Stopped recalculating inactive players (<b>−54%</b> recalculation time, <b>~300 GB</b> out of the hot path); fine-grained update events cut recalculations by a further <b>31%</b>.</li>
+          <li>Helped split the multi-tenant service into 3 independent production stacks without service-wide downtime.</li>
+          <li>Reworked how segmentation filters are built and moved 70+ out of the monolith: a new filter takes <b>6 h instead of 20 h</b> and one developer instead of two.</li>
+        </ul>
+      </div>
+      <div class="p-role">
+        <div class="p-role-head"><div class="p-role-title">Ruby on Rails Developer <span>· Aristek Systems</span></div><div class="p-dates">Jan 2021 — Nov 2021</div></div>
+        <p class="p-scope">STEMscopes by Accelerate Learning: US K-12 STEM platform for 6M+ students</p>
+        <ul>
+          <li>Worked on REST APIs during a monolith-to-services split (React frontend); covered legacy code with RSpec.</li>
+        </ul>
+      </div>
+      <div class="p-role">
+        <div class="p-role-head"><div class="p-role-title">Junior Ruby on Rails Developer <span>· iTechArt Group</span></div><div class="p-dates">May 2020 — Jan 2021</div></div>
+        <ul>
+          <li>Built and deployed a news portal (Rails 6, PostgreSQL, Sidekiq, RSpec/Capybara): roles and editorial workflow, RSS import/export, email digests, analytics.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-sec">
+    <h2>Skills</h2>
+    <div class="p-skills">
+      <dl class="p-rows">
+        <dt>Backend</dt><dd>Ruby, Ruby on Rails, Sidekiq, Karafka, Go, TypeScript</dd>
+        <dt>Brokers</dt><dd>Kafka, RabbitMQ</dd>
+        <dt>Databases</dt><dd>PostgreSQL, MongoDB, Redis, ClickHouse</dd>
+        <dt>Testing</dt><dd>RSpec, FactoryBot, Capybara</dd>
+        <dt>AI tooling</dt><dd>Claude Code, Cursor, CodeRabbit</dd>
+      </dl>
+      <dl class="p-rows">
+        <dt>DevOps</dt><dd>Docker, Kubernetes, Helm, GitLab CI/CD, Jenkins, Vault, Airflow</dd>
+        <dt>Monitoring</dt><dd>Datadog, Sentry, Prometheus, Grafana</dd>
+        <dt>Architecture</dt><dd>Event-driven microservices, system design, multi-tenant SaaS</dd>
+        <dt>Process</dt><dd>Agile, Scrum, Kanban</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="p-sec">
+    <h2>Recognition</h2>
+    <dl class="p-rows">
+      <dt>1st place</dt><dd><a href="https://www.softswiss.com/news/ai-hackathon-2026/">SOFTSWISS AI Hackathon 2026</a> <span class="m">· team Alpine Black Goose, AI-driven SDLC 2.0</span></dd>
+      <dt>1st place</dt><dd><a href="https://www.linkedin.com/feed/update/urn:li:activity:7396347704097828864/">SOFTSWISS Hackathon 2025</a> <span class="m">· PvP casino battles on WebRTC in 48 h</span></dd>
+      <dt>Speaker</dt><dd>“Hit the Target. Smarter Recalculations.” <span class="m">· SOFTSWISS internal conference, 2025</span></dd>
+    </dl>
+  </section>
+
+  <section class="p-sec">
+    <h2>Education</h2>
+    <div class="p-role-head">
+      <div class="p-role-title" style="font-size:13px">Belarusian State University <span>· Bachelor of Science in Applied Mathematics &amp; Computer Science</span></div>
+      <div class="p-dates">2016 — 2020</div>
+    </div>
+  </section>
+
+  <section class="p-sec">
+    <h2>Languages</h2>
+    <div class="p-langs">
+      <div><span class="n">Russian</span><span class="l">Native</span></div>
+      <div><span class="n">English</span><span class="l">Intermediate</span></div>
+      <div><span class="n">Polish</span><span class="l">Intermediate (B1)</span></div>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var bar = document.getElementById('topbar');
+    function on() { bar.classList.toggle('scrolled', window.scrollY > 8); }
+    window.addEventListener('scroll', on, { passive: true }); on();
+  })();
+</script>
 </body>
 </html>

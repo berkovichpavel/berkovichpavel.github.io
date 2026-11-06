@@ -1,11 +1,9 @@
-# Curriculum vitae
+# berkovichpavel.github.io
 
-[![View Code](https://img.shields.io/badge/View%20-Code-green)](https://github.com/berkovichpavel/berkovichpavel.github.io)
+Personal CV site — https://berkovichpavel.github.io/
 
-# Author 
+- `index.html` — interactive CV page (prints as a one-page A4 CV via Cmd/Ctrl+P)
+- `Pavel_Biarkovich_CV.pdf` — ready-made PDF of the same CV
+- `assets/` — photos
 
-👤 **Berkovich Pavel**
-
-- Github: [https://github.com/berkovichpavel](https://github.com/berkovichpavel)
-- Telegram: [https://t.me/BerkovichPavel](https://t.me/BerkovichPavel)
-- Linkedin: [https://www.linkedin.com/in/pavel-berkovich-9844251a4/](https://www.linkedin.com/in/pavel-berkovich-9844251a4/)
+The previous version is kept in git history: tag `cv-v1-legacy` and branch `archive/cv-v1-legacy`.

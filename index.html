@@ -121,6 +121,8 @@
     .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-top: 36px; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
     .stat { padding: 16px 18px; background: rgba(15,16,20,.62); }
     .stat .v { font: 700 30px/1.05 "Inter Tight", sans-serif; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .stat { container-type: inline-size; }
+    .stat .v.long { white-space: nowrap; font-size: min(30px, 18cqi); }
     .stat .k { margin-top: 6px; font-size: 12.5px; line-height: 1.35; color: #a9adb8; }
 
     /* sections */
@@ -218,6 +220,7 @@
       .portrait { width: 210px; }
       .stat { padding: 14px 14px; }
       .stat .v { font-size: 26px; }
+      .stat .v.long { font-size: min(26px, 18cqi); }
       .case.wide { grid-template-columns: 1fr; }
     }
     /* large phones / small tablets */
@@ -237,6 +240,7 @@
       .stats { grid-template-columns: repeat(2, 1fr); }
       .stat:last-child { grid-column: span 2; }
       .stat .v { font-size: 26px; }
+      .stat .v.long { font-size: min(26px, 18cqi); }
       .timeline { --pad: 22px; --lx: 6px; --dot: 12px; }
       .job, .job.past { padding: 20px 18px; }
       .job::before { top: 33px; }
@@ -258,6 +262,7 @@
       .portrait { width: 160px; }
       .stat { padding: 12px; }
       .stat .v { font-size: 22px; }
+      .stat .v.long { font-size: min(22px, 18cqi); }
       .btn { padding: 0; width: 38px; height: 38px; justify-content: center; }
       .btn .dl-t { display: none; }
       .brand { font-size: 14px; }
@@ -575,7 +580,7 @@
         <div class="box skills">
           <h3>Skills</h3>
           <div class="skill-grid">
-            <div class="skill-group"><div class="l">Languages &amp; frameworks</div><div class="chips"><span class="chip">Ruby</span><span class="chip">Ruby on Rails</span><span class="chip">Sidekiq</span><span class="chip">Karafka</span><span class="chip">Go</span><span class="chip">TypeScript</span></div></div>
+            <div class="skill-group"><div class="l">Languages &amp; frameworks</div><div class="chips"><span class="chip">Ruby</span><span class="chip">Ruby on Rails</span><span class="chip">Sidekiq</span><span class="chip">Karafka</span><span class="chip">Go</span></div></div>
             <div class="skill-group"><div class="l">Message brokers</div><div class="chips"><span class="chip">Kafka</span><span class="chip">RabbitMQ</span></div></div>
             <div class="skill-group"><div class="l">Databases</div><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">ClickHouse</span></div></div>
             <div class="skill-group"><div class="l">Testing</div><div class="chips"><span class="chip">RSpec</span><span class="chip">FactoryBot</span><span class="chip">Capybara</span></div></div>
@@ -693,7 +698,7 @@
     <h2>Skills</h2>
     <div class="p-skills">
       <dl class="p-rows">
-        <dt>Backend</dt><dd>Ruby, Ruby on Rails, Sidekiq, Karafka, Go, TypeScript</dd>
+        <dt>Backend</dt><dd>Ruby, Ruby on Rails, Sidekiq, Karafka, Go</dd>
         <dt>Brokers</dt><dd>Kafka, RabbitMQ</dd>
         <dt>Databases</dt><dd>PostgreSQL, MongoDB, Redis, ClickHouse</dd>
         <dt>Testing</dt><dd>RSpec, FactoryBot, Capybara</dd>
@@ -748,7 +753,7 @@
           <p class="lead">
             6+ лет в Ruby on Rails. В <b>SOFTSWISS</b> руковожу кросс-функциональной командой из <b>15</b> человек. Команда отвечает за
             <b>9 событийно-ориентированных iGaming-микросервисов</b>, которые обслуживают <b>300+ операторов онлайн-казино</b> и потребляют
-            <b>8.5k событий Kafka в секунду</b>. До этого четыре года разрабатывал сервис сегментации игроков
+            <b>8,5 тыс. событий Kafka в секунду</b>. До этого четыре года разрабатывал сервис сегментации игроков
             и его движок маркетинговой автоматизации. Сейчас отвечаю за планирование, менторинг и релизы команды.
           </p>
           <ul class="links">
@@ -775,7 +780,7 @@
         <div class="stat"><div class="v grad-text">15</div><div class="k">человек в команде</div></div>
         <div class="stat"><div class="v grad-text">9</div><div class="k">сервисов в продакшене в зоне ответственности</div></div>
         <div class="stat"><div class="v grad-text">300+</div><div class="k">операторов казино</div></div>
-        <div class="stat"><div class="v grad-text">8.5k/с</div><div class="k">событий Kafka на входе</div></div>
+        <div class="stat"><div class="v grad-text long">8,5&nbsp;тыс./с</div><div class="k">событий Kafka на входе</div></div>
         <div class="stat"><div class="v grad-text">6+ лет</div><div class="k">с Ruby on Rails</div></div>
       </div>
     </header>
@@ -807,20 +812,20 @@
           <p class="scope">Сегментация игроков в реальном времени и движок маркетинговой автоматизации для iGaming B2B-платформы · multi-tenant, 300+ операторов казино</p>
           <div class="chips"><span class="chip">Ruby 3.4</span><span class="chip">Rails 7</span><span class="chip">Kafka · Karafka</span><span class="chip">Sidekiq</span><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Kubernetes</span></div>
           <ul class="ticks">
-            <li><b>Движок маркетинговой автоматизации</b> (правила, которые реагируют на действия игрока в реальном времени): работал над ним с первой версии в 2022 году. Триггер (40+ типов, включая расписания и триггеры на каждую ставку) запускает воркфлоу, условия (128 типов) проверяют игрока, а действия начисляют бонусы и комп-поинты, ставят теги или отправляют уведомления. Я реализовал первые действия, валидации воркфлоу и декомпозицию триггеров, позже помогал масштабировать движок и раскатывать его на бренды. <b>2k+ событий/с</b>; сейчас <b>5k+ активных воркфлоу</b>.</li>
-            <li><b>Триггеры на каждую ставку</b>, например бонус сразу после крупного выигрыша: продумал дизайн и координировал команду, которая их реализовала. Поток игровых раундов сопоставляется с заранее скомпилированными матчерами триггеров, а in-process LRU/TTL-кэши инвалидируются через Redis pub/sub. <b>~2.75 с</b> от ставки до действия.</li>
+            <li><b>Движок маркетинговой автоматизации</b> (правила, которые реагируют на действия игрока в реальном времени): работал над ним с первой версии в 2022 году. Триггер (40+ типов, включая расписания и триггеры на каждую ставку) запускает воркфлоу, условия (128 типов) проверяют игрока, а действия начисляют бонусы и комп-поинты, ставят теги или отправляют уведомления. Я реализовал первые действия, валидации воркфлоу и декомпозицию триггеров, позже помогал масштабировать движок и раскатывать его на бренды. <b>2+ тыс. событий в секунду</b>; сейчас <b>5+ тыс. активных воркфлоу</b>.</li>
+            <li><b>Триггеры на каждую ставку</b>, например бонус сразу после крупного выигрыша: продумал дизайн и координировал команду, которая их реализовала. Поток игровых раундов сопоставляется с заранее скомпилированными матчерами триггеров, а in-process LRU/TTL-кэши инвалидируются через Redis pub/sub. <b>~2,75 с</b> от ставки до действия.</li>
             <li><b>Ожидания по расписанию в воркфлоу</b> («подождать 3 дня, затем отправить оффер»): реализовал еженедельные range-партиции в PostgreSQL рядом с MongoDB, стейт-машину задержек и cron-планировщик, который массово ставит задачи Sidekiq в очередь 30-секундными бакетами.</li>
             <li><b>Активные/неактивные игроки:</b> убрал пересчёт сегментов для неактивных игроков; среднее время пересчёта <b>−54%</b>, <b>~300 ГБ</b> холодных данных ушли с горячего пути.</li>
             <li><b>Декомпозиция событий:</b> разбил крупные события обновления игрока на мелкие, чтобы пересчитывались только зависимые сегменты: <b>−31%</b> событий пересчёта.</li>
             <li><b>Разделение сервиса:</b> участвовал в разделении multi-tenant-сервиса на 3 независимых продакшен-стека и в переносе казино между ними партиями, без простоя всего сервиса.</li>
             <li><b>Фильтры:</b> переработал построение фильтров сегментации и вынес 70+ фильтров из монолита платформы. Новый фильтр теперь занимает <b>6 ч вместо 20 ч</b> и <b>одного разработчика вместо двух</b> и выходит без релиза платформы.</li>
-            <li>Обновления и поддержка: Rails 6.1 → 7.0, Mongoid 8, тюнинг Karafka 2.5, bigint для ID пользователей, миграция Kafka-кластера, оптимизация индексов MongoDB на коллекциях со 100M+ записей.</li>
+            <li>Обновления и поддержка: Rails 6.1 → 7.0, Mongoid 8, тюнинг Karafka 2.5, bigint для ID пользователей, миграция Kafka-кластера, оптимизация индексов MongoDB на коллекциях со 100+ млн записей.</li>
           </ul>
         </article>
 
         <article class="job past">
           <div class="job-head"><h3>Ruby on Rails Developer <span>· Aristek Systems</span></h3><span class="when">янв. 2021 — нояб. 2021</span></div>
-          <p class="scope">STEMscopes — платформа STEM-обучения для школ США (K-12) от <a href="https://www.acceleratelearning.com/" target="_blank" rel="noopener">Accelerate Learning</a>, ею пользуются 6M+ учеников и 600K+ учителей во всех 50 штатах</p>
+          <p class="scope">STEMscopes — платформа STEM-обучения для школ США (K-12) от <a href="https://www.acceleratelearning.com/" target="_blank" rel="noopener">Accelerate Learning</a>, ею пользуются 6+ млн учеников и 600+ тыс. учителей во всех 50 штатах</p>
           <ul class="ticks">
             <li>Разрабатывал REST API, пока команда разделяла большой Rails-монолит на сервисы с фронтендом на React.</li>
             <li>Разрабатывал и поддерживал бэкенд-функциональность для учителей и учеников в распределённой Scrum-команде с продакт-оунерами из США.</li>
@@ -873,8 +878,8 @@
           <h3>Маркетинговая автоматизация в реальном времени</h3>
           <p>Движок воркфлоу, который реагирует на события игроков в реальном времени: триггер запускает воркфлоу, условия проверяют игрока, а действия начисляют бонусы, добавляют теги или отправляют уведомления.</p>
           <div class="results">
-            <div><div class="v grad-text">2k+/с</div><div class="k">обработка событий</div></div>
-            <div><div class="v grad-text">5k+</div><div class="k">активных воркфлоу</div></div>
+            <div><div class="v grad-text">2+ тыс./с</div><div class="k">обработка событий</div></div>
+            <div><div class="v grad-text">5+ тыс.</div><div class="k">активных воркфлоу</div></div>
             <div><div class="v grad-text">128</div><div class="k">типов условий</div></div>
           </div>
           <details>
@@ -892,7 +897,7 @@
           <h3>Триггер на каждую ставку</h3>
           <p>Позволяет операторам реагировать на каждую отдельную ставку (например, начислить бонус после крупного выигрыша), а не ждать периодического пересчёта.</p>
           <div class="results">
-            <div><div class="v grad-text">~2.75 с</div><div class="k">от ставки до действия</div></div>
+            <div><div class="v grad-text">~2,75 с</div><div class="k">от ставки до действия</div></div>
             <div><div class="v grad-text">3</div><div class="k">продакшен-стека</div></div>
           </div>
           <details>
@@ -911,7 +916,7 @@
           <p>«Подождать 3 дня, затем отправить оффер». Ставит воркфлоу на паузу для каждого игрока и возобновляет его в пределах 30-секундного окна планирования.</p>
           <div class="results">
             <div><div class="v grad-text">30 с</div><div class="k">бакеты планирования</div></div>
-            <div><div class="v grad-text">10k</div><div class="k">задач за один bulk push</div></div>
+            <div><div class="v grad-text">10 тыс.</div><div class="k">задач за один bulk push</div></div>
           </div>
           <details>
             <summary>Как это устроено</summary>
@@ -948,7 +953,7 @@
         <div class="box skills">
           <h3>Навыки</h3>
           <div class="skill-grid">
-            <div class="skill-group"><div class="l">Языки и фреймворки</div><div class="chips"><span class="chip">Ruby</span><span class="chip">Ruby on Rails</span><span class="chip">Sidekiq</span><span class="chip">Karafka</span><span class="chip">Go</span><span class="chip">TypeScript</span></div></div>
+            <div class="skill-group"><div class="l">Языки и фреймворки</div><div class="chips"><span class="chip">Ruby</span><span class="chip">Ruby on Rails</span><span class="chip">Sidekiq</span><span class="chip">Karafka</span><span class="chip">Go</span></div></div>
             <div class="skill-group"><div class="l">Брокеры сообщений</div><div class="chips"><span class="chip">Kafka</span><span class="chip">RabbitMQ</span></div></div>
             <div class="skill-group"><div class="l">Базы данных</div><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">ClickHouse</span></div></div>
             <div class="skill-group"><div class="l">Тестирование</div><div class="chips"><span class="chip">RSpec</span><span class="chip">FactoryBot</span><span class="chip">Capybara</span></div></div>
@@ -1032,7 +1037,7 @@
         <div class="stat"><div class="v grad-text">15</div><div class="k">osób w moim zespole</div></div>
         <div class="stat"><div class="v grad-text">9</div><div class="k">serwisów produkcyjnych pod opieką zespołu</div></div>
         <div class="stat"><div class="v grad-text">300+</div><div class="k">obsługiwanych operatorów kasyn</div></div>
-        <div class="stat"><div class="v grad-text">8,5k/s</div><div class="k">konsumowanych zdarzeń Kafka</div></div>
+        <div class="stat"><div class="v grad-text long">8,5&nbsp;tys./s</div><div class="k">konsumowanych zdarzeń Kafka</div></div>
         <div class="stat"><div class="v grad-text">6+ lat</div><div class="k">z Ruby on Rails</div></div>
       </div>
     </header>
@@ -1064,14 +1069,14 @@
           <p class="scope">Segmentacja graczy w czasie rzeczywistym i silnik marketing automation dla platformy iGaming B2B · multi-tenant, 300+ operatorów kasyn</p>
           <div class="chips"><span class="chip">Ruby 3.4</span><span class="chip">Rails 7</span><span class="chip">Kafka · Karafka</span><span class="chip">Sidekiq</span><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Kubernetes</span></div>
           <ul class="ticks">
-            <li><b>Silnik marketing automation</b> (reguły reagujące na akcje graczy w czasie rzeczywistym): pracowałem nad nim od pierwszej wersji w 2022 roku. Trigger (40+ typów, w tym harmonogramy i triggery na każdy zakład) uruchamia workflow, warunki (128 typów) sprawdzają gracza, a akcje przyznają bonusy i comp pointy, ustawiają tagi lub wysyłają powiadomienia. Zaimplementowałem pierwsze akcje, walidacje workflow i dekompozycję triggerów. Później pomagałem skalować silnik i wdrażać go u kolejnych brandów. <b>2k+ zdarzeń/s</b>; obecnie <b>5k+ aktywnych workflow</b>.</li>
+            <li><b>Silnik marketing automation</b> (reguły reagujące na akcje graczy w czasie rzeczywistym): pracowałem nad nim od pierwszej wersji w 2022 roku. Trigger (40+ typów, w tym harmonogramy i triggery na każdy zakład) uruchamia workflow, warunki (128 typów) sprawdzają gracza, a akcje przyznają bonusy i comp pointy, ustawiają tagi lub wysyłają powiadomienia. Zaimplementowałem pierwsze akcje, walidacje workflow i dekompozycję triggerów. Później pomagałem skalować silnik i wdrażać go u kolejnych brandów. <b>2+ tys. zdarzeń na sekundę</b>; obecnie <b>5+ tys. aktywnych workflow</b>.</li>
             <li><b>Triggery na każdy zakład</b>, np. bonus zaraz po dużej wygranej: zaplanowałem projekt rozwiązania i koordynowałem zespół, który je zbudował. Strumień rund gry jest dopasowywany do prekompilowanych matcherów triggerów. Cache LRU/TTL działają w procesie i są inwalidowane przez Redis pub/sub. <b>~2,75 s</b> od zakładu do akcji.</li>
             <li><b>Zaplanowane opóźnienia w workflow</b> („poczekaj 3 dni, potem wyślij ofertę”), moja implementacja: tygodniowe partycje zakresowe w PostgreSQL obok MongoDB, maszyna stanów opóźnień i scheduler cron, który masowo kolejkuje joby Sidekiq w 30-sekundowych kubełkach.</li>
             <li><b>Aktywni/nieaktywni gracze:</b> wyłączyłem przeliczanie segmentów dla nieaktywnych graczy. Średni czas przeliczenia <b>−54%</b>, <b>~300 GB</b> zimnych danych poza hot path.</li>
             <li><b>Dekompozycja zdarzeń:</b> podzieliłem ogólne zdarzenia aktualizacji gracza na bardziej szczegółowe, więc przeliczają się tylko zależne segmenty: <b>−31%</b> zdarzeń przeliczeń.</li>
             <li><b>Podział serwisu:</b> brałem udział w podziale serwisu multi-tenant na 3 niezależne stacki produkcyjne i w migracji kasyn między nimi partiami, bez przestoju całego serwisu.</li>
             <li><b>Filtry:</b> przebudowałem sposób tworzenia filtrów segmentacji i przeniosłem ponad 70 z nich z monolitu platformy. Nowy filtr wymaga teraz <b>6 h zamiast 20 h</b> i <b>jednego developera zamiast dwóch</b>. Trafia na produkcję bez release'u platformy.</li>
-            <li>Aktualizacje i utrzymanie: Rails 6.1 → 7.0, Mongoid 8, tuning Karafka 2.5, ID użytkowników typu bigint, migracja klastra Kafka, tuning indeksów MongoDB w kolekcjach 100M+ rekordów.</li>
+            <li>Aktualizacje i utrzymanie: Rails 6.1 → 7.0, Mongoid 8, tuning Karafka 2.5, ID użytkowników typu bigint, migracja klastra Kafka, tuning indeksów MongoDB w kolekcjach 100+ mln rekordów.</li>
           </ul>
         </article>
 
@@ -1130,8 +1135,8 @@
           <h3>Marketing automation w czasie rzeczywistym</h3>
           <p>Silnik workflow, który reaguje na zdarzenia graczy w czasie rzeczywistym: trigger uruchamia workflow, warunki sprawdzają gracza, a akcje przyznają bonusy, dodają tagi lub wysyłają powiadomienia.</p>
           <div class="results">
-            <div><div class="v grad-text">2k+/s</div><div class="k">przetwarzanych zdarzeń</div></div>
-            <div><div class="v grad-text">5k+</div><div class="k">aktywnych workflow</div></div>
+            <div><div class="v grad-text">2+ tys./s</div><div class="k">przetwarzanych zdarzeń</div></div>
+            <div><div class="v grad-text">5+ tys.</div><div class="k">aktywnych workflow</div></div>
             <div><div class="v grad-text">128</div><div class="k">typów warunków</div></div>
           </div>
           <details>
@@ -1168,7 +1173,7 @@
           <p>„Poczekaj 3 dni, potem wyślij ofertę.” Wstrzymuje workflow dla każdego gracza i wznawia go w 30-sekundowym oknie planowania.</p>
           <div class="results">
             <div><div class="v grad-text">30 s</div><div class="k">kubełki planowania</div></div>
-            <div><div class="v grad-text">10k</div><div class="k">jobów w jednym bulk push</div></div>
+            <div><div class="v grad-text">10 tys.</div><div class="k">jobów w jednym bulk push</div></div>
           </div>
           <details>
             <summary>Jak to działa</summary>
@@ -1205,7 +1210,7 @@
         <div class="box skills">
           <h3>Umiejętności</h3>
           <div class="skill-grid">
-            <div class="skill-group"><div class="l">Języki i frameworki</div><div class="chips"><span class="chip">Ruby</span><span class="chip">Ruby on Rails</span><span class="chip">Sidekiq</span><span class="chip">Karafka</span><span class="chip">Go</span><span class="chip">TypeScript</span></div></div>
+            <div class="skill-group"><div class="l">Języki i frameworki</div><div class="chips"><span class="chip">Ruby</span><span class="chip">Ruby on Rails</span><span class="chip">Sidekiq</span><span class="chip">Karafka</span><span class="chip">Go</span></div></div>
             <div class="skill-group"><div class="l">Brokery wiadomości</div><div class="chips"><span class="chip">Kafka</span><span class="chip">RabbitMQ</span></div></div>
             <div class="skill-group"><div class="l">Bazy danych</div><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">ClickHouse</span></div></div>
             <div class="skill-group"><div class="l">Testowanie</div><div class="chips"><span class="chip">RSpec</span><span class="chip">FactoryBot</span><span class="chip">Capybara</span></div></div>

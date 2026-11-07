@@ -106,10 +106,10 @@
     .hero .role span { color: #a9adb8; }
     .hero .lead { margin: 0; max-width: 640px; font-size: 16px; line-height: 1.65; color: #c9ccd4; }
     .hero .lead b { color: #fff; }
-    .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 0; padding: 0; list-style: none; }
+    .links { display: flex; flex-wrap: wrap; gap: 6px; margin: 22px 0 0; padding: 0; list-style: none; }
     .links a, .links span {
-      display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
-      font-size: 13px; color: #e6e8ee; padding: 8px 12px; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+      font-size: 13px; color: #e6e8ee; padding: 8px 11px; border-radius: 999px;
       background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
       transition: background .15s, border-color .15s;
     }
@@ -122,7 +122,7 @@
     .stat { padding: 16px 18px; background: rgba(15,16,20,.62); }
     .stat .v { font: 700 30px/1.05 "Inter Tight", sans-serif; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
     .stat { container-type: inline-size; }
-    .stat .v.long { white-space: nowrap; font-size: min(30px, 18cqi); }
+    .stat .v.long { white-space: nowrap; font-size: min(30px, 18cqi); height: 31.5px; display: flex; align-items: flex-end; }
     .stat .k { margin-top: 6px; font-size: 12.5px; line-height: 1.35; color: #a9adb8; }
 
     /* sections */
@@ -220,7 +220,7 @@
       .portrait { width: 210px; }
       .stat { padding: 14px 14px; }
       .stat .v { font-size: 26px; }
-      .stat .v.long { font-size: min(26px, 18cqi); }
+      .stat .v.long { font-size: min(26px, 18cqi); height: 27.3px; }
       .case.wide { grid-template-columns: 1fr; }
     }
     /* large phones / small tablets */
@@ -240,7 +240,7 @@
       .stats { grid-template-columns: repeat(2, 1fr); }
       .stat:last-child { grid-column: span 2; }
       .stat .v { font-size: 26px; }
-      .stat .v.long { font-size: min(26px, 18cqi); }
+      .stat .v.long { font-size: min(26px, 18cqi); height: 27.3px; }
       .timeline { --pad: 22px; --lx: 6px; --dot: 12px; }
       .job, .job.past { padding: 20px 18px; }
       .job::before { top: 33px; }
@@ -262,7 +262,7 @@
       .portrait { width: 160px; }
       .stat { padding: 12px; }
       .stat .v { font-size: 22px; }
-      .stat .v.long { font-size: min(22px, 18cqi); }
+      .stat .v.long { font-size: min(22px, 18cqi); height: 23.1px; }
       .btn { padding: 0; width: 38px; height: 38px; justify-content: center; }
       .btn .dl-t { display: none; }
       .brand { font-size: 14px; }
@@ -441,12 +441,12 @@
           <ul class="ticks">
             <li><b>Marketing-automation engine</b> (rules that react to player actions in real time): worked on it from the first version in 2022. A trigger (40+ types, including schedules and per-bet triggers) starts a workflow, conditions (128 types) check the player, and actions grant bonuses and comp points, set tags or send notifications. Implemented the first actions, workflow validations and trigger decomposition, and later helped scale the engine and roll it out to brands. It processes <b>2k+ events/s</b> and now runs <b>5k+ live workflows</b>.</li>
             <li><b>Per-bet triggers</b> (e.g. a bonus right after a big win): planned the design and coordinated the team that built them. The game-round stream is matched against pre-compiled trigger matchers, with in-process LRU/TTL caches invalidated over Redis pub/sub. <b>~2.75 s</b> from bet to action.</li>
-            <li><b>Scheduled waits in workflows</b> (“wait 3 days, then send the offer”): implemented weekly range partitions in PostgreSQL alongside MongoDB, a delay state machine and a cron scheduler that bulk-enqueues Sidekiq jobs in 30-second buckets.</li>
+            <li><b>Scheduled waits in workflows</b> (“wait 3 days, then send the offer”): implemented range-partitioned PostgreSQL alongside MongoDB, a delay state machine and a cron scheduler that bulk-enqueues Sidekiq jobs ahead of time.</li>
             <li><b>Active/inactive players:</b> stopped recalculating segments for inactive players. Average recalculation time <b>−54%</b>; <b>~300 GB</b> of cold data moved out of the hot path.</li>
             <li><b>Event decomposition:</b> split coarse player-update events into fine-grained ones, so only dependent segments recalculate: <b>−31%</b> recalculation events.</li>
-            <li><b>Service split:</b> took part in splitting the multi-tenant service into 3 independent production stacks and migrating casino operators between them in batches, without service-wide downtime.</li>
+            <li><b>Service split:</b> took part in splitting the multi-tenant service into independent production stacks and migrating casino operators between them in batches, without service-wide downtime.</li>
             <li><b>Filters:</b> reworked how segmentation filters are built and moved 70+ of them out of the platform monolith. A new filter now takes <b>6 h instead of 20 h</b> and <b>one developer instead of two</b>, and ships without a platform release.</li>
-            <li>Upgrades and maintenance: Rails 6.1 → 7.0, Mongoid 8, Karafka 2.5 tuning, bigint user IDs, Kafka cluster migration, MongoDB index tuning on collections with 100M+ documents.</li>
+            <li>Upgrades and maintenance: Rails 6.1 → 7.0, Mongoid 8, Karafka 2.5 tuning, bigint user IDs, Kafka cluster migration, MongoDB index tuning on large collections.</li>
           </ul>
         </article>
 
@@ -512,7 +512,7 @@
           <details>
             <summary>How it works</summary>
             <ul>
-              <li>Karafka consumers on ~30 platform event topics build a player profile with 100+ fields.</li>
+              <li>Karafka consumers on platform event topics build a player profile with 100+ fields.</li>
               <li>40+ trigger types, including schedules and per-bet triggers; actions for bonuses, comp points, tags, groups, notifications, lottery tickets and delays.</li>
               <li>Actions are published to Kafka from Sidekiq jobs with retries, in batches of 1,000 players; validations cap node count and prevent loops.</li>
             </ul>
@@ -525,14 +525,13 @@
           <p>Lets operators react to each individual bet (for example, a bonus after a big win) instead of waiting for a periodic recalculation.</p>
           <div class="results">
             <div><div class="v grad-text">~2.75 s</div><div class="k">from bet to action</div></div>
-            <div><div class="v grad-text">3</div><div class="k">production stacks it runs on</div></div>
           </div>
           <details>
             <summary>How it works</summary>
             <ul>
               <li>A batch Kafka consumer on game-round events groups bets per casino and matches them against pre-compiled trigger matchers.</li>
-              <li>In-process LRU caches with TTL hold compiled workflows and per-player counters; counters are flushed every 30 s and on eviction, rebalance or shutdown.</li>
-              <li>Cache invalidation is broadcast over Redis pub/sub; guardrails cap the number of triggers and set a minimum bet.</li>
+              <li>In-process LRU caches with TTL hold compiled workflows and per-player counters; counters are flushed periodically and on eviction, rebalance or shutdown.</li>
+              <li>Cache invalidation is broadcast over Redis pub/sub.</li>
             </ul>
           </details>
         </article>
@@ -540,17 +539,16 @@
         <article class="case">
           <span class="label">Implemented</span>
           <h3>Scheduled waits in workflows</h3>
-          <p>“Wait 3 days, then send the offer.” Pauses a workflow for each player and resumes it within a 30-second scheduling window.</p>
+          <p>“Wait 3 days, then send the offer.” Pauses a workflow for each player and resumes it on time.</p>
           <div class="results">
-            <div><div class="v grad-text">30 s</div><div class="k">scheduling buckets</div></div>
             <div><div class="v grad-text">10k</div><div class="k">jobs per bulk push</div></div>
           </div>
           <details>
             <summary>How it works</summary>
             <ul>
-              <li>Added PostgreSQL to a MongoDB service: weekly range partitions, created ahead and rotated by cron.</li>
+              <li>Added PostgreSQL to a MongoDB service: range partitions, created ahead and rotated by cron.</li>
               <li>State machine: waiting → queued → started → finished / skipped / failed.</li>
-              <li>A cron job every 5 minutes picks up overdue delays and pre-enqueues the next 10 minutes via Sidekiq bulk push; a failure monitor watches for stuck delays.</li>
+              <li>A periodic cron job picks up due delays and pre-enqueues upcoming ones via Sidekiq bulk push; a failure monitor watches for stuck delays.</li>
             </ul>
           </details>
         </article>
@@ -674,9 +672,9 @@
         <ul>
           <li>Worked on the real-time marketing-automation engine from its first version in 2022: triggers (40+ types) → conditions (128 types) → bonus, tag or notification. <b>2k+</b> events/s; now <b>5k+</b> live workflows.</li>
           <li>Planned the design of per-bet triggers (e.g. bonus right after a big win) and coordinated the team that built them: bets matched against pre-compiled matchers, LRU/TTL caches invalidated via Redis pub/sub, <b>~2.75 s</b> from bet to action.</li>
-          <li>Implemented scheduled waits in workflows: weekly-partitioned PostgreSQL next to MongoDB and Sidekiq bulk scheduling in 30-second buckets.</li>
+          <li>Implemented scheduled waits in workflows: range-partitioned PostgreSQL next to MongoDB and Sidekiq bulk scheduling.</li>
           <li>Stopped recalculating segments for inactive players (<b>−54%</b> recalculation time, <b>~300 GB</b> out of the hot path); finer-grained events: <b>−31%</b> recalculation events.</li>
-          <li>Helped split the multi-tenant service into 3 independent production stacks without service-wide downtime.</li>
+          <li>Helped split the multi-tenant service into independent production stacks without service-wide downtime.</li>
           <li>Reworked how segmentation filters are built and moved 70+ out of the monolith: a new filter takes <b>6 h instead of 20 h</b> and one developer instead of two.</li>
         </ul>
       </div>
@@ -759,10 +757,7 @@
           <h1>Pavel Biarkovich</h1>
           <p class="role">Backend Team Lead <span>· высоконагруженные iGaming-микросервисы</span></p>
           <p class="lead">
-            6+ лет в Ruby on Rails. В <b>SOFTSWISS</b> руковожу кросс-функциональной командой из <b>15</b> человек. Команда отвечает за
-            <b>9 событийно-ориентированных iGaming-микросервисов</b>, которые обслуживают <b>300+ операторов онлайн-казино</b> и обрабатывают
-            <b>8,5 тыс. событий Kafka в секунду</b>. До этого четыре года разрабатывал сервис сегментации игроков
-            и его движок маркетинговой автоматизации. Сейчас отвечаю за планирование, менторинг и релизы команды.
+            6+ лет в Ruby on Rails. В <b>SOFTSWISS</b> руковожу кросс-функциональной командой из <b>15</b> человек, из них <b>6 бэкенд-разработчиков</b> — мои прямые подчинённые. Команда отвечает за <b>9 событийно-ориентированных iGaming-микросервисов</b>, которые обслуживают <b>300+ операторов онлайн-казино</b> и обрабатывают <b>8,5 тыс. событий Kafka в секунду</b>. До того как стать тимлидом, четыре года работал над сервисом сегментации игроков и его движком маркетинговой автоматизации.
           </p>
           <ul class="links">
             <li><span>
@@ -822,12 +817,12 @@
           <ul class="ticks">
             <li><b>Движок маркетинговой автоматизации</b> (правила, которые реагируют на действия игрока в реальном времени): работал над ним с первой версии в 2022 году. Триггер (40+ типов, включая расписания и триггеры на каждую ставку) запускает воркфлоу, условия (128 типов) проверяют игрока, а действия начисляют бонусы и комп-поинты, ставят теги или отправляют уведомления. Я реализовал первые действия, валидации воркфлоу и декомпозицию триггеров, позже помогал масштабировать движок и раскатывать его на бренды. Движок обрабатывает <b>2+ тыс. событий в секунду</b>, сейчас в нём <b>5+ тыс. активных воркфлоу</b>.</li>
             <li><b>Триггеры на каждую ставку</b>, например бонус сразу после крупного выигрыша: спроектировал решение и координировал команду, которая его реализовала. Поток игровых раундов сопоставляется с заранее скомпилированными матчерами триггеров, а in-process LRU/TTL-кэши инвалидируются через Redis pub/sub. <b>~2,75 с</b> от ставки до действия.</li>
-            <li><b>Задержки в воркфлоу</b> («подождать 3 дня, затем отправить оффер»): добавил в сервис на MongoDB PostgreSQL с еженедельными range-партициями, реализовал стейт-машину задержек и cron-планировщик, который массово ставит задачи Sidekiq в очередь 30-секундными окнами.</li>
+            <li><b>Задержки в воркфлоу</b> («подождать 3 дня, затем отправить оффер»): добавил в сервис на MongoDB PostgreSQL с range-партициями, реализовал стейт-машину задержек и cron-планировщик, который заранее массово ставит задачи Sidekiq в очередь.</li>
             <li><b>Активные/неактивные игроки:</b> убрал пересчёт сегментов для неактивных игроков; среднее время пересчёта <b>−54%</b>, <b>~300 ГБ</b> холодных данных вынесены из основного потока обработки.</li>
             <li><b>Декомпозиция событий:</b> разбил крупные события обновления игрока на мелкие, чтобы пересчитывались только зависимые сегменты: <b>−31%</b> событий пересчёта.</li>
-            <li><b>Разделение сервиса:</b> участвовал в разбиении мультитенантного сервиса на 3 независимых продакшен-стека и в переносе казино между ними партиями, без простоя всего сервиса.</li>
+            <li><b>Разделение сервиса:</b> участвовал в разбиении мультитенантного сервиса на независимые продакшен-стеки и в переносе казино между ними партиями, без простоя всего сервиса.</li>
             <li><b>Фильтры:</b> переработал построение фильтров сегментации и вынес 70+ фильтров из монолита платформы. Новый фильтр теперь делает <b>один разработчик за 6 ч</b> (раньше <b>двое за 20 ч</b>), и выходит он без релиза платформы.</li>
-            <li>Обновления и поддержка: Rails 6.1 → 7.0, Mongoid 8, тюнинг Karafka 2.5, bigint для ID пользователей, миграция Kafka-кластера, оптимизация индексов MongoDB на коллекциях со 100+ млн документов.</li>
+            <li>Обновления и поддержка: Rails 6.1 → 7.0, Mongoid 8, тюнинг Karafka 2.5, bigint для ID пользователей, миграция Kafka-кластера, оптимизация индексов MongoDB на больших коллекциях.</li>
           </ul>
         </article>
 
@@ -893,7 +888,7 @@
           <details>
             <summary>Как это устроено</summary>
             <ul>
-              <li>Консьюмеры Karafka на ~30 топиках событий платформы собирают профиль игрока из 100+ полей.</li>
+              <li>Консьюмеры Karafka на топиках событий платформы собирают профиль игрока из 100+ полей.</li>
               <li>40+ типов триггеров, включая расписания и триггеры на каждую ставку; действия для бонусов, комп-поинтов, тегов, групп, уведомлений, лотерейных билетов и задержек.</li>
               <li>Действия публикуются в Kafka из задач Sidekiq с ретраями, батчами по 1000 игроков; валидации ограничивают число узлов и не допускают циклов.</li>
             </ul>
@@ -906,14 +901,13 @@
           <p>Позволяет операторам реагировать на каждую отдельную ставку (например, начислить бонус после крупного выигрыша), а не ждать периодического пересчёта.</p>
           <div class="results">
             <div><div class="v grad-text">~2,75 с</div><div class="k">от ставки до действия</div></div>
-            <div><div class="v grad-text">3</div><div class="k">продакшен-стека</div></div>
           </div>
           <details>
             <summary>Как это устроено</summary>
             <ul>
               <li>Батчевый консьюмер Kafka на событиях игровых раундов группирует ставки по казино и сопоставляет их с заранее скомпилированными матчерами триггеров.</li>
-              <li>In-process LRU-кэши с TTL хранят скомпилированные воркфлоу и счётчики по игрокам; счётчики выгружаются каждые 30 с, а также при вытеснении, ребалансе или остановке.</li>
-              <li>Инвалидация кэша рассылается через Redis pub/sub; защитные ограничения задают лимит на число триггеров и минимальную ставку.</li>
+              <li>In-process LRU-кэши с TTL хранят скомпилированные воркфлоу и счётчики по игрокам; счётчики периодически выгружаются, а также при вытеснении, ребалансе или остановке.</li>
+              <li>Инвалидация кэша рассылается через Redis pub/sub.</li>
             </ul>
           </details>
         </article>
@@ -921,17 +915,16 @@
         <article class="case">
           <span class="label">Реализация</span>
           <h3>Задержки в воркфлоу</h3>
-          <p>«Подождать 3 дня, затем отправить оффер». Ставит воркфлоу на паузу для каждого игрока и возобновляет его в пределах 30-секундного окна планирования.</p>
+          <p>«Подождать 3 дня, затем отправить оффер». Ставит воркфлоу на паузу для каждого игрока и вовремя возобновляет его.</p>
           <div class="results">
-            <div><div class="v grad-text">30 с</div><div class="k">окно планирования</div></div>
             <div><div class="v grad-text">10 тыс.</div><div class="k">задач за один bulk push</div></div>
           </div>
           <details>
             <summary>Как это устроено</summary>
             <ul>
-              <li>Добавил PostgreSQL в сервис на MongoDB: еженедельные range-партиции, которые создаются заранее и ротируются по cron.</li>
+              <li>Добавил PostgreSQL в сервис на MongoDB: range-партиции, которые создаются заранее и ротируются по cron.</li>
               <li>Стейт-машина: waiting → queued → started → finished / skipped / failed.</li>
-              <li>Cron-задача каждые 5 минут подбирает просроченные задержки и заранее ставит в очередь задачи на следующие 10 минут через Sidekiq bulk push; монитор сбоев отслеживает зависшие задержки.</li>
+              <li>Периодическая cron-задача подбирает наступившие задержки и заранее ставит в очередь ближайшие через Sidekiq bulk push; монитор сбоев отслеживает зависшие задержки.</li>
             </ul>
           </details>
         </article>
@@ -1018,10 +1011,7 @@
           <h1>Pavel Biarkovich</h1>
           <p class="role">Backend Team Lead <span>· mikroserwisy iGaming pod dużym obciążeniem</span></p>
           <p class="lead">
-            6+ lat pracy z Ruby on Rails. W <b>SOFTSWISS</b> prowadzę cross-funkcyjny zespół <b>15 osób</b>, który odpowiada za
-            <b>9 mikroserwisów iGaming typu event-driven</b>. Obsługują one <b>300+ operatorów kasyn online</b> i konsumują
-            <b>8,5 tys. zdarzeń z Kafki na sekundę</b>. Wcześniej przez cztery lata rozwijałem serwis segmentacji graczy
-            i jego silnik marketing automation. Teraz odpowiadam za planowanie, mentoring i release'y zespołu.
+            6+ lat pracy z Ruby on Rails. W <b>SOFTSWISS</b> prowadzę cross-funkcyjny zespół <b>15 osób</b> i jestem bezpośrednim przełożonym <b>6 backend developerów</b>. Zespół odpowiada za <b>9 mikroserwisów iGaming typu event-driven</b>, które obsługują <b>300+ operatorów kasyn online</b> i konsumują <b>8,5 tys. zdarzeń z Kafki na sekundę</b>. Zanim zostałem team leadem, przez cztery lata pracowałem nad serwisem segmentacji graczy i jego silnikiem marketing automation.
           </p>
           <ul class="links">
             <li><span>
@@ -1081,12 +1071,12 @@
           <ul class="ticks">
             <li><b>Silnik marketing automation</b> (reguły reagujące na akcje graczy w czasie rzeczywistym): pracowałem nad nim od pierwszej wersji w 2022 roku. Trigger (40+ typów, w tym harmonogramy i triggery na każdy zakład) uruchamia workflow, warunki (128 typów) sprawdzają gracza, a akcje przyznają bonusy i comp pointy, ustawiają tagi lub wysyłają powiadomienia. Zaimplementowałem pierwsze akcje, walidacje workflow i dekompozycję triggerów. Później pomagałem skalować silnik i wdrażać go u kolejnych marek. <b>2+ tys. zdarzeń na sekundę</b>; obecnie <b>5+ tys. aktywnych workflow</b>.</li>
             <li><b>Triggery na każdy zakład</b>, np. bonus zaraz po dużej wygranej: zaplanowałem architekturę rozwiązania i koordynowałem zespół, który je zbudował. Strumień rund gry jest dopasowywany do prekompilowanych matcherów triggerów. Cache LRU/TTL działają w procesie i są inwalidowane przez Redis pub/sub. <b>~2,75 s</b> od zakładu do akcji.</li>
-            <li><b>Zaplanowane opóźnienia w workflow</b> („poczekaj 3 dni, potem wyślij ofertę”): zaimplementowałem tygodniowe partycje zakresowe w PostgreSQL obok MongoDB, maszynę stanów opóźnień i scheduler cron, który masowo kolejkuje joby Sidekiq w 30-sekundowych oknach.</li>
+            <li><b>Zaplanowane opóźnienia w workflow</b> („poczekaj 3 dni, potem wyślij ofertę”): zaimplementowałem partycje zakresowe w PostgreSQL obok MongoDB, maszynę stanów opóźnień i scheduler cron, który z wyprzedzeniem masowo kolejkuje joby Sidekiq.</li>
             <li><b>Aktywni/nieaktywni gracze:</b> wyłączyłem przeliczanie segmentów dla nieaktywnych graczy. Średni czas przeliczenia <b>−54%</b>, <b>~300 GB</b> zimnych danych poza hot path.</li>
             <li><b>Dekompozycja zdarzeń:</b> podzieliłem ogólne zdarzenia aktualizacji gracza na bardziej szczegółowe, więc przeliczają się tylko zależne segmenty: <b>−31%</b> zdarzeń wywołujących przeliczenie.</li>
-            <li><b>Podział serwisu:</b> brałem udział w podziale serwisu multi-tenant na 3 niezależne stacki produkcyjne i w migracji kasyn między nimi partiami, bez przestoju całego serwisu.</li>
+            <li><b>Podział serwisu:</b> brałem udział w podziale serwisu multi-tenant na niezależne stacki produkcyjne i w migracji kasyn między nimi partiami, bez przestoju całego serwisu.</li>
             <li><b>Filtry:</b> przebudowałem sposób tworzenia filtrów segmentacji i przeniosłem ponad 70 z nich z monolitu platformy. Przygotowanie nowego filtra zajmuje teraz <b>6 h zamiast 20 h</b> i angażuje <b>jednego developera zamiast dwóch</b>, a filtr trafia na produkcję bez release'u platformy.</li>
-            <li>Aktualizacje i utrzymanie: Rails 6.1 → 7.0, Mongoid 8, tuning Karafka 2.5, ID użytkowników typu bigint, migracja klastra Kafki, tuning indeksów MongoDB w kolekcjach liczących ponad 100 mln dokumentów.</li>
+            <li>Aktualizacje i utrzymanie: Rails 6.1 → 7.0, Mongoid 8, tuning Karafka 2.5, ID użytkowników typu bigint, migracja klastra Kafki, tuning indeksów MongoDB w dużych kolekcjach.</li>
           </ul>
         </article>
 
@@ -1152,7 +1142,7 @@
           <details>
             <summary>Jak to działa</summary>
             <ul>
-              <li>Konsumenci Karafka na ~30 topicach zdarzeń platformy budują profil gracza z ponad 100 polami.</li>
+              <li>Konsumenci Karafka na topicach zdarzeń platformy budują profil gracza z ponad 100 polami.</li>
               <li>Ponad 40 typów triggerów, w tym harmonogramy i triggery na każdy zakład; akcje: bonusy, comp pointy, tagi, grupy, powiadomienia, losy na loterię i opóźnienia.</li>
               <li>Akcje są publikowane do Kafki z jobów Sidekiq z retry, w partiach po 1000 graczy; walidacje pilnują liczby węzłów i pętli.</li>
             </ul>
@@ -1165,14 +1155,13 @@
           <p>Pozwala operatorom reagować na każdy pojedynczy zakład (np. bonus po dużej wygranej) zamiast czekać na okresowe przeliczenie.</p>
           <div class="results">
             <div><div class="v grad-text">~2,75 s</div><div class="k">od zakładu do akcji</div></div>
-            <div><div class="v grad-text">3</div><div class="k">stacki produkcyjne</div></div>
           </div>
           <details>
             <summary>Jak to działa</summary>
             <ul>
               <li>Batchowy konsument Kafki czyta zdarzenia rund gry, grupuje zakłady według kasyna i dopasowuje je do prekompilowanych matcherów triggerów.</li>
-              <li>Cache LRU z TTL w procesie przechowują skompilowane workflow i liczniki per gracz. Liczniki są zrzucane co 30 s oraz przy eviction, rebalansie lub zamknięciu procesu.</li>
-              <li>Inwalidacja cache jest rozgłaszana przez Redis pub/sub; zabezpieczenia: limit liczby triggerów i próg minimalnej stawki.</li>
+              <li>Cache LRU z TTL w procesie przechowują skompilowane workflow i liczniki per gracz. Liczniki są okresowo zrzucane oraz przy eviction, rebalansie lub zamknięciu procesu.</li>
+              <li>Inwalidacja cache jest rozgłaszana przez Redis pub/sub.</li>
             </ul>
           </details>
         </article>
@@ -1180,17 +1169,16 @@
         <article class="case">
           <span class="label">Implementacja</span>
           <h3>Zaplanowane opóźnienia w workflow</h3>
-          <p>„Poczekaj 3 dni, potem wyślij ofertę.” Wstrzymuje workflow dla każdego gracza i wznawia go w 30-sekundowym oknie planowania.</p>
+          <p>„Poczekaj 3 dni, potem wyślij ofertę.” Wstrzymuje workflow dla każdego gracza i wznawia go we właściwym momencie.</p>
           <div class="results">
-            <div><div class="v grad-text">30 s</div><div class="k">okno planowania</div></div>
             <div><div class="v grad-text">10 tys.</div><div class="k">jobów w jednym bulk push</div></div>
           </div>
           <details>
             <summary>Jak to działa</summary>
             <ul>
-              <li>Dodałem PostgreSQL do serwisu na MongoDB: tygodniowe partycje zakresowe, tworzone z wyprzedzeniem i rotowane przez cron.</li>
+              <li>Dodałem PostgreSQL do serwisu na MongoDB: partycje zakresowe, tworzone z wyprzedzeniem i rotowane przez cron.</li>
               <li>Maszyna stanów: waiting → queued → started → finished / skipped / failed.</li>
-              <li>Job cron co 5 minut pobiera opóźnienia, których termin już minął, i z wyprzedzeniem kolejkuje te przypadające na najbliższe 10 minut (Sidekiq bulk push). Monitor błędów wychwytuje zawieszone opóźnienia.</li>
+              <li>Okresowy job cron pobiera opóźnienia, których termin już minął, i z wyprzedzeniem kolejkuje najbliższe (Sidekiq bulk push). Monitor błędów wychwytuje zawieszone opóźnienia.</li>
             </ul>
           </details>
         </article>

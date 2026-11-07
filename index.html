@@ -378,10 +378,10 @@
           <h1>Pavel Biarkovich</h1>
           <p class="role">Backend Team Lead <span>· high-load iGaming microservices</span></p>
           <p class="lead">
-            6+ years in Ruby on Rails. At <b>SOFTSWISS</b> I lead a cross-functional team of <b>15</b> that owns
-            <b>9 event-driven iGaming microservices</b> that serve <b>300+ online casino operators</b> and consume
-            <b>8.5k Kafka events/s</b>. Before that I spent four years developing the player segmentation service
-            and its marketing-automation engine. Now I handle planning, mentoring and releases for the team.
+            6+ years in Ruby on Rails. At <b>SOFTSWISS</b> I lead a cross-functional team of <b>15</b> and directly manage
+            its 5 backend engineers. The team owns <b>9 event-driven iGaming microservices</b> that serve <b>300+ online casino operators</b> and consume
+            <b>8.5k Kafka events/s</b>. Before becoming team lead, I spent four years working on the player segmentation service
+            and its marketing-automation engine.
           </p>
           <ul class="links">
             <li><span>
@@ -423,48 +423,48 @@
         <article class="job current">
           <div class="job-head"><h3>Backend Team Lead <span>· SOFTSWISS</span></h3><span class="when">2026 — Present</span></div>
           <p class="scope">9 services: player segmentation, bonus system, tournaments, jackpots, real-time notifications and WebSocket gateway, product store, player chat, customer engagement, integrations</p>
-          <div class="chips"><span class="chip hot">7 backend · 3 frontend · 3 QA · 2 AQA</span><span class="chip">Roadmap &amp; sprint planning</span><span class="chip">System design reviews</span><span class="chip">Releases</span><span class="chip">Incident management</span><span class="chip">1:1s &amp; mentoring</span></div>
+          <div class="chips"><span class="chip hot">7 backend · 3 frontend · 3 QA · 2 QA automation</span><span class="chip">Roadmap &amp; sprint planning</span><span class="chip">System design reviews</span><span class="chip">Releases</span><span class="chip">Incident management</span><span class="chip">1:1s &amp; mentoring</span></div>
           <ul class="ticks">
-            <li>Lead a <b>cross-functional team of 15</b> that owns 9 production microservices, and am the <b>direct manager of its 5 backend engineers</b>: roadmap and sprint planning, system design reviews, releases and incident management.</li>
+            <li>Lead a <b>cross-functional team of 15</b> that owns 9 production microservices and <b>directly manage its 5 backend engineers</b>. Run roadmap and sprint planning, system design reviews, releases and incident management.</li>
             <li><b>People:</b> regular 1:1s, onboarding plans for new hires, mentoring through code and design reviews.</li>
             <li><b>Code ownership:</b> set up CODEOWNERS and a service-to-team map, so every repository, Airflow DAG and alert has an owner and reviews are routed automatically.</li>
-            <li><b>Code-review bot</b> (TypeScript, GitLab + Slack), main developer. With AI tools, code gets written faster and review has become the bottleneck. The bot assigns a reviewer to every merge request, picking the least-loaded one, reminds them during working hours, escalates stalled reviews to the lead and reports time to first review and to merge. Used by <b>8 teams and 47 reviewers</b>. Separately, set up AI code review (CodeRabbit, Cursor) in 5 repositories.</li>
-            <li><b>Onboarding docs:</b> write interactive guides to the team's services with architecture diagrams, step-by-step event simulators, debugging playbooks and quizzes. New engineers find them easier to learn from than static wiki pages.</li>
-            <li><b>Automation and optimisation:</b> with the team, we keep taking manual and slow work out of our services: routine operational tasks such as onboarding new casino clients move into Airflow pipelines, slow code paths get optimised, and release notes are drafted with LLMs.</li>
+            <li><b>Reviewer-assignment bot</b> (TypeScript, GitLab + Slack), main developer. With AI tools, code gets written faster and review has become the bottleneck. The bot assigns a reviewer to every merge request, picking the least-loaded one, reminds them during working hours, escalates stalled reviews to the lead and reports time to first review and to merge. Used by <b>8 teams and 47 reviewers</b>. Separately, set up AI code review (CodeRabbit, Cursor) in 5 repositories.</li>
+            <li><b>Onboarding docs:</b> write interactive guides to the team's services with architecture diagrams, step-by-step event simulators, debugging playbooks and quizzes.</li>
+            <li><b>Automation and optimisation:</b> ongoing team work to cut manual and slow work. Routine operational tasks, such as onboarding new casino operators, move into Airflow pipelines; slow code paths get optimised; release notes are drafted with LLMs.</li>
           </ul>
         </article>
 
         <article class="job">
           <div class="job-head"><h3>Senior Ruby on Rails Engineer <span>· SOFTSWISS</span></h3><span class="when">Nov 2021 — 2026</span></div>
-          <p class="scope">Real-time player segmentation and marketing-automation engine for an iGaming B2B platform · multi-tenant, 300+ casino operators</p>
+          <p class="scope">Real-time player segmentation and marketing-automation engine for a B2B iGaming platform · multi-tenant, 300+ casino operators</p>
           <div class="chips"><span class="chip">Ruby 3.4</span><span class="chip">Rails 7</span><span class="chip">Kafka · Karafka</span><span class="chip">Sidekiq</span><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Kubernetes</span></div>
           <ul class="ticks">
-            <li><b>Marketing-automation engine</b> (rules that react to player actions in real time): worked on it from the first version in 2022. A trigger (40+ types, including schedules and per-bet triggers) starts a workflow, conditions (128 types) check the player, and actions grant bonuses and comp points, set tags or send notifications. I implemented the first actions, workflow validations and trigger decomposition, and later helped scale it and roll it out to brands. <b>2k+ events/s</b>; today <b>5k+ live workflows</b>.</li>
-            <li><b>Per-bet triggers</b>, for example a bonus right after a big win: planned the design and coordinated the team that built it. The game-round stream is matched against pre-compiled trigger matchers, with in-process LRU/TTL caches invalidated over Redis pub/sub. <b>~2.75 s</b> from bet to action.</li>
-            <li><b>Scheduled waits in workflows</b> (“wait 3 days, then send the offer”), implemented: weekly range partitions in PostgreSQL next to MongoDB, a delay state machine and a cron scheduler that bulk-enqueues Sidekiq jobs in 30-second buckets.</li>
-            <li><b>Active/inactive players:</b> stopped recalculating segments for inactive players; average recalculation time <b>−54%</b>, <b>~300 GB</b> of cold data out of the hot path.</li>
+            <li><b>Marketing-automation engine</b> (rules that react to player actions in real time): worked on it from the first version in 2022. A trigger (40+ types, including schedules and per-bet triggers) starts a workflow, conditions (128 types) check the player, and actions grant bonuses and comp points, set tags or send notifications. Implemented the first actions, workflow validations and trigger decomposition, and later helped scale the engine and roll it out to brands. It processes <b>2k+ events/s</b> and now runs <b>5k+ live workflows</b>.</li>
+            <li><b>Per-bet triggers</b> (e.g. a bonus right after a big win): planned the design and coordinated the team that built them. The game-round stream is matched against pre-compiled trigger matchers, with in-process LRU/TTL caches invalidated over Redis pub/sub. <b>~2.75 s</b> from bet to action.</li>
+            <li><b>Scheduled waits in workflows</b> (“wait 3 days, then send the offer”): implemented weekly range partitions in PostgreSQL alongside MongoDB, a delay state machine and a cron scheduler that bulk-enqueues Sidekiq jobs in 30-second buckets.</li>
+            <li><b>Active/inactive players:</b> stopped recalculating segments for inactive players. Average recalculation time <b>−54%</b>; <b>~300 GB</b> of cold data moved out of the hot path.</li>
             <li><b>Event decomposition:</b> split coarse player-update events into fine-grained ones, so only dependent segments recalculate: <b>−31%</b> recalculation events.</li>
-            <li><b>Service split:</b> took part in splitting the multi-tenant service into 3 independent production stacks and migrating casinos between them in batches, without service-wide downtime.</li>
+            <li><b>Service split:</b> took part in splitting the multi-tenant service into 3 independent production stacks and migrating casino operators between them in batches, without service-wide downtime.</li>
             <li><b>Filters:</b> reworked how segmentation filters are built and moved 70+ of them out of the platform monolith. A new filter now takes <b>6 h instead of 20 h</b> and <b>one developer instead of two</b>, and ships without a platform release.</li>
-            <li>Upgrades and maintenance: Rails 6.1 → 7.0, Mongoid 8, Karafka 2.5 tuning, bigint user IDs, Kafka cluster migration, MongoDB index tuning on 100M+ row collections.</li>
+            <li>Upgrades and maintenance: Rails 6.1 → 7.0, Mongoid 8, Karafka 2.5 tuning, bigint user IDs, Kafka cluster migration, MongoDB index tuning on collections with 100M+ documents.</li>
           </ul>
         </article>
 
         <article class="job past">
-          <div class="job-head"><h3>Ruby on Rails Developer <span>· Aristek Systems</span></h3><span class="when">Jan 2021 — Nov 2021</span></div>
-          <p class="scope">STEMscopes, a US K-12 STEM learning platform by <a href="https://www.acceleratelearning.com/" target="_blank" rel="noopener">Accelerate Learning</a>, used by 6M+ students and 600K+ teachers in all 50 states</p>
+          <div class="job-head"><h3>Ruby on Rails Developer <span>· Aristek Systems</span></h3><span class="when">Mar 2021 — Nov 2021</span></div>
+          <p class="scope">STEMscopes, a US K-12 STEM learning platform by <a href="https://www.acceleratelearning.com/" target="_blank" rel="noopener">Accelerate Learning</a>, used by 6M+ students and 600k+ teachers in all 50 states</p>
           <ul class="ticks">
-            <li>Worked on REST APIs while the team split a large Rails monolith into services with a React frontend.</li>
+            <li>Worked on REST APIs while the team split a large Rails monolith into backend services and a separate React frontend.</li>
             <li>Developed and maintained backend features for teachers and students in a distributed Scrum team with US product owners.</li>
             <li>Covered legacy code with RSpec unit and integration tests, so the team could refactor it safely.</li>
           </ul>
         </article>
 
         <article class="job past">
-          <div class="job-head"><h3>Junior Ruby on Rails Developer <span>· iTechArt Group</span></h3><span class="when">May 2020 — Jan 2021</span></div>
+          <div class="job-head"><h3>Junior Ruby on Rails Developer <span>· iTechArt Group</span></h3><span class="when">Oct 2020 — Feb 2021</span></div>
           <p class="scope">Ruby on Rails program: one end-to-end project, a news portal</p>
           <ul class="ticks">
-            <li>Built and deployed a news portal (231 commits, 27 PRs): four roles with an editorial workflow from correspondent to editor, RSS import and export, email digests by category, tag or region, comments and ratings, view analytics and charted admin reports.</li>
+            <li>Built and deployed a news portal: four roles with an editorial workflow from correspondent to editor, RSS import and export, email digests by category, tag or region, comments and ratings, view analytics and charted admin reports.</li>
             <li>Rails 6, PostgreSQL, Sidekiq and cron jobs, Devise with GitHub OAuth, CanCanCan; tested with RSpec, Capybara and FactoryBot, N+1 queries caught with Bullet.</li>
           </ul>
         </article>
@@ -494,7 +494,7 @@
             <summary>How it works</summary>
             <ul>
               <li>CODEOWNERS and a service-to-team map: every repository, DAG and alert has an owner; reviews route automatically.</li>
-              <li>Code-review bot: assigns a reviewer to every merge request, choosing the least-loaded one over a 30-day window with a soft cap on open reviews; reminds within working hours, escalates stalled reviews to the lead and reports time to first review and to merge.</li>
+              <li>Reviewer-assignment bot: assigns a reviewer to every merge request, choosing the least-loaded one over a 30-day window with a soft cap on open reviews; sends reminders during working hours, escalates stalled reviews to the lead and reports time to first review and to merge.</li>
               <li>Interactive onboarding docs with simulators and quizzes, so a new engineer can learn a service on their own.</li>
             </ul>
           </details>
@@ -514,7 +514,7 @@
             <ul>
               <li>Karafka consumers on ~30 platform event topics build a player profile with 100+ fields.</li>
               <li>40+ trigger types, including schedules and per-bet triggers; actions for bonuses, comp points, tags, groups, notifications, lottery tickets and delays.</li>
-              <li>Actions are published to Kafka from Sidekiq jobs with retries, in batches of 1,000 players; validations guard node count and loops.</li>
+              <li>Actions are published to Kafka from Sidekiq jobs with retries, in batches of 1,000 players; validations cap node count and prevent loops.</li>
             </ul>
           </details>
         </article>
@@ -525,14 +525,14 @@
           <p>Lets operators react to each individual bet (for example, a bonus after a big win) instead of waiting for a periodic recalculation.</p>
           <div class="results">
             <div><div class="v grad-text">~2.75 s</div><div class="k">from bet to action</div></div>
-            <div><div class="v grad-text">3</div><div class="k">production stacks</div></div>
+            <div><div class="v grad-text">3</div><div class="k">production stacks it runs on</div></div>
           </div>
           <details>
             <summary>How it works</summary>
             <ul>
               <li>A batch Kafka consumer on game-round events groups bets per casino and matches them against pre-compiled trigger matchers.</li>
               <li>In-process LRU caches with TTL hold compiled workflows and per-player counters; counters are flushed every 30 s and on eviction, rebalance or shutdown.</li>
-              <li>Cache invalidation is broadcast over Redis pub/sub; guardrails limit trigger count and minimum bet.</li>
+              <li>Cache invalidation is broadcast over Redis pub/sub; guardrails cap the number of triggers and set a minimum bet.</li>
             </ul>
           </details>
         </article>
@@ -602,7 +602,7 @@
 
         <div class="box">
           <h3>Education</h3>
-          <div><span style="font-weight:600;color:var(--ink)">Belarusian State University</span><span style="font-size:13px;color:var(--muted);white-space:nowrap"> · 2016–2020</span></div>
+          <div><span style="font-weight:600;color:var(--ink)">Belarusian State University</span><span style="font-size:13px;color:var(--muted);white-space:nowrap"> · 2016 — 2020</span></div>
           <div style="font-size:13px;color:var(--muted)">Bachelor of Science in Applied Mathematics &amp; Computer Science</div>
           <div class="mini">
             <h3>Languages</h3>
@@ -640,7 +640,7 @@
         <li><a href="tel:+48571920420">+48 571 920 420</a></li>
         <li><a href="https://www.linkedin.com/in/pavel-berkovich/">linkedin.com/in/pavel-berkovich</a></li>
       </ul>
-      <p class="p-summary">Backend Team Lead with 6+ years in Ruby on Rails. At SOFTSWISS (B2B iGaming platform) I lead a team of 15 and directly manage its 5 backend engineers; we own 9 event-driven microservices that serve 300+ online casino operators and consume 8.5k Kafka events/s. Before that, 4 years on the real-time player segmentation and marketing-automation engine.</p>
+      <p class="p-summary">Backend Team Lead with 6+ years in Ruby on Rails. At SOFTSWISS (B2B iGaming platform) I lead a team of 15 and directly manage its 5 backend engineers; we own 9 event-driven microservices that serve 300+ online casino operators and consume 8.5k Kafka events/s. Before that, 4 years on the player segmentation service and its marketing automation.</p>
     </div>
     <img class="p-photo" src="assets/avatar.jpg" alt="">
   </div>
@@ -661,8 +661,8 @@
         <div class="p-role-head"><div class="p-role-title">Backend Team Lead <span>· SOFTSWISS</span></div><div class="p-dates">2026 — Present</div></div>
         <p class="p-scope">Player segmentation, bonus system, tournaments, jackpots, notifications + 4 more services</p>
         <ul>
-          <li>Lead a cross-functional team of 15 owning 9 microservices; direct manager of 5 backend engineers: roadmap and sprint planning, system design reviews, releases, incidents, 1:1s, mentoring.</li>
-          <li>Set up code ownership (CODEOWNERS, service-to-team map). Main developer of a code-review bot (GitLab + Slack) that assigns reviewers to merge requests, as review became the bottleneck: least-loaded choice, reminders, escalation, time-to-review reports; used by <b>8</b> teams, <b>47</b> reviewers. Set up AI code review in 5 repositories.</li>
+          <li>Run roadmap and sprint planning, system design reviews, releases and incidents for the team of 15; 1:1s and mentoring for my 5 backend engineers.</li>
+          <li>Set up code ownership (CODEOWNERS, service-to-team map). Main developer of a reviewer-assignment bot (GitLab + Slack), built as review became the bottleneck: picks the least-loaded reviewer, sends reminders, escalates, reports review times; used by <b>8</b> teams, <b>47</b> reviewers. Separately, set up AI code review in 5 repositories.</li>
           <li>Write interactive onboarding docs for the team's services (simulators, quizzes); with the team, keep automating routine work (Airflow pipelines, LLM release notes) and optimising slow code.</li>
         </ul>
       </div>
@@ -671,22 +671,22 @@
         <p class="p-scope">Real-time player segmentation service and its marketing-automation engine (multi-tenant)</p>
         <ul>
           <li>Worked on the real-time marketing-automation engine from its first version in 2022: triggers (40+ types) → conditions (128 types) → bonus, tag or notification. <b>2k+</b> events/s; now <b>5k+</b> live workflows.</li>
-          <li>Planned the design of per-bet triggers (e.g. bonus right after a big win) and coordinated the team: game-round stream matched against pre-compiled trigger matchers, LRU/TTL caches invalidated via Redis pub/sub, <b>~2.75 s</b> bet to action.</li>
+          <li>Planned the design of per-bet triggers (e.g. bonus right after a big win) and coordinated the team that built them: bets matched against pre-compiled matchers, LRU/TTL caches invalidated via Redis pub/sub, <b>~2.75 s</b> from bet to action.</li>
           <li>Implemented scheduled waits in workflows: weekly-partitioned PostgreSQL next to MongoDB and Sidekiq bulk scheduling in 30-second buckets.</li>
-          <li>Stopped recalculating inactive players (<b>−54%</b> recalculation time, <b>~300 GB</b> out of the hot path); fine-grained update events cut recalculations by a further <b>31%</b>.</li>
+          <li>Stopped recalculating segments for inactive players (<b>−54%</b> recalculation time, <b>~300 GB</b> out of the hot path); finer-grained events: <b>−31%</b> recalculation events.</li>
           <li>Helped split the multi-tenant service into 3 independent production stacks without service-wide downtime.</li>
           <li>Reworked how segmentation filters are built and moved 70+ out of the monolith: a new filter takes <b>6 h instead of 20 h</b> and one developer instead of two.</li>
         </ul>
       </div>
       <div class="p-role">
-        <div class="p-role-head"><div class="p-role-title">Ruby on Rails Developer <span>· Aristek Systems</span></div><div class="p-dates">Jan 2021 — Nov 2021</div></div>
+        <div class="p-role-head"><div class="p-role-title">Ruby on Rails Developer <span>· Aristek Systems</span></div><div class="p-dates">Mar 2021 — Nov 2021</div></div>
         <p class="p-scope">STEMscopes by Accelerate Learning: US K-12 STEM platform for 6M+ students</p>
         <ul>
           <li>Worked on REST APIs during a monolith-to-services split (React frontend); covered legacy code with RSpec.</li>
         </ul>
       </div>
       <div class="p-role">
-        <div class="p-role-head"><div class="p-role-title">Junior Ruby on Rails Developer <span>· iTechArt Group</span></div><div class="p-dates">May 2020 — Jan 2021</div></div>
+        <div class="p-role-head"><div class="p-role-title">Junior Ruby on Rails Developer <span>· iTechArt Group</span></div><div class="p-dates">Oct 2020 — Feb 2021</div></div>
         <ul>
           <li>Ruby on Rails program: built a news portal end to end (Rails 6, PostgreSQL, Sidekiq, RSpec/Capybara) with roles, editorial workflow, RSS, email digests.</li>
         </ul>
@@ -752,7 +752,7 @@
           <p class="role">Backend Team Lead <span>· высоконагруженные iGaming-микросервисы</span></p>
           <p class="lead">
             6+ лет в Ruby on Rails. В <b>SOFTSWISS</b> руковожу кросс-функциональной командой из <b>15</b> человек. Команда отвечает за
-            <b>9 событийно-ориентированных iGaming-микросервисов</b>, которые обслуживают <b>300+ операторов онлайн-казино</b> и потребляют
+            <b>9 событийно-ориентированных iGaming-микросервисов</b>, которые обслуживают <b>300+ операторов онлайн-казино</b> и обрабатывают
             <b>8,5 тыс. событий Kafka в секунду</b>. До этого четыре года разрабатывал сервис сегментации игроков
             и его движок маркетинговой автоматизации. Сейчас отвечаю за планирование, менторинг и релизы команды.
           </p>
@@ -794,16 +794,16 @@
       <div class="timeline">
 
         <article class="job current">
-          <div class="job-head"><h3>Backend Team Lead <span>· SOFTSWISS</span></h3><span class="when">2026 — н. в.</span></div>
+          <div class="job-head"><h3>Backend Team Lead <span>· SOFTSWISS</span></h3><span class="when">2026 — наст. время</span></div>
           <p class="scope">9 сервисов: сегментация игроков, бонусная система, турниры, джекпоты, уведомления в реальном времени и WebSocket-шлюз, product store, чат игроков, customer engagement, интеграции</p>
           <div class="chips"><span class="chip hot">7 backend · 3 frontend · 3 QA · 2 AQA</span><span class="chip">Роадмап и планирование спринтов</span><span class="chip">Ревью архитектуры</span><span class="chip">Релизы</span><span class="chip">Управление инцидентами</span><span class="chip">1:1 и менторинг</span></div>
           <ul class="ticks">
-            <li>Руковожу <b>кросс-функциональной командой из 15 человек</b>, которая отвечает за 9 микросервисов в продакшене. Я <b>непосредственный руководитель 5 бэкенд-разработчиков</b> команды: роадмап и планирование спринтов, ревью архитектуры, релизы и управление инцидентами.</li>
-            <li><b>Люди:</b> регулярные 1:1, планы онбординга для новичков, менторинг через код-ревью и ревью дизайна.</li>
-            <li><b>Владение кодом:</b> настроил CODEOWNERS и карту «сервис — команда»: у каждого репозитория, DAG в Airflow и алерта есть владелец, а ревью назначаются автоматически.</li>
-            <li><b>Бот для код-ревью</b> (TypeScript, GitLab + Slack), основной разработчик. С AI-инструментами код пишется быстрее, и узким местом стало ревью. Бот назначает ревьюера на каждый мерж-реквест, выбирая наименее загруженного, напоминает о ревью в рабочие часы, эскалирует зависшие ревью лиду и считает время до первого ревью и до мержа. Им пользуются <b>8 команд и 47 ревьюеров</b>. Отдельно настроил AI-ревью кода (CodeRabbit, Cursor) в 5 репозиториях.</li>
-            <li><b>Документация для онбординга:</b> пишу интерактивные гайды по сервисам команды: архитектурные диаграммы, пошаговые симуляторы событий, плейбуки по отладке и квизы. Новым инженерам по ним учиться проще, чем по статичным страницам в вики.</li>
-            <li><b>Автоматизация и оптимизация:</b> вместе с командой постоянно убираем ручную и медленную работу из наших сервисов: рутинные операционные задачи, например подключение новых клиентов-казино, переносим в пайплайны Airflow, медленные участки кода оптимизируем, а черновики релизных заметок готовим с помощью LLM.</li>
+            <li>Руковожу <b>кросс-функциональной командой из 15 человек</b> (9 микросервисов в продакшене), из них <b>5 бэкенд-разработчиков</b> — мои прямые подчинённые. Отвечаю за роадмап и планирование спринтов, ревью архитектуры, релизы и управление инцидентами.</li>
+            <li><b>Работа с командой:</b> регулярные 1:1, планы онбординга для новых сотрудников, менторинг через код-ревью и ревью архитектуры.</li>
+            <li><b>Владение кодом:</b> настроил CODEOWNERS и карту «сервис — команда», так что у каждого репозитория, DAG в Airflow и алерта есть владелец, а ревьюеры назначаются автоматически.</li>
+            <li><b>Бот для назначения ревьюеров</b> (TypeScript, GitLab + Slack), я основной разработчик. С AI-инструментами код пишется быстрее, и узким местом стало ревью. Бот назначает ревьюера на каждый мерж-реквест, выбирая наименее загруженного, напоминает о ревью в рабочие часы, сообщает тимлиду о зависших ревью и считает время до первого ревью и до мержа. Им пользуются <b>8 команд и 47 ревьюеров</b>. Отдельно настроил AI-ревью кода (CodeRabbit, Cursor) в 5 репозиториях.</li>
+            <li><b>Документация для онбординга:</b> пишу интерактивные гайды по сервисам команды: архитектурные диаграммы, пошаговые симуляторы событий, плейбуки по отладке и квизы.</li>
+            <li><b>Автоматизация и оптимизация:</b> вместе с командой постоянно сокращаем ручную и медленную работу. Рутинные операционные задачи, например подключение новых операторов казино, переносим в пайплайны Airflow, оптимизируем медленные участки кода, а черновики описаний релизов готовим с помощью LLM.</li>
           </ul>
         </article>
 
@@ -812,19 +812,19 @@
           <p class="scope">Сегментация игроков в реальном времени и движок маркетинговой автоматизации для iGaming B2B-платформы · multi-tenant, 300+ операторов казино</p>
           <div class="chips"><span class="chip">Ruby 3.4</span><span class="chip">Rails 7</span><span class="chip">Kafka · Karafka</span><span class="chip">Sidekiq</span><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Kubernetes</span></div>
           <ul class="ticks">
-            <li><b>Движок маркетинговой автоматизации</b> (правила, которые реагируют на действия игрока в реальном времени): работал над ним с первой версии в 2022 году. Триггер (40+ типов, включая расписания и триггеры на каждую ставку) запускает воркфлоу, условия (128 типов) проверяют игрока, а действия начисляют бонусы и комп-поинты, ставят теги или отправляют уведомления. Я реализовал первые действия, валидации воркфлоу и декомпозицию триггеров, позже помогал масштабировать движок и раскатывать его на бренды. <b>2+ тыс. событий в секунду</b>; сейчас <b>5+ тыс. активных воркфлоу</b>.</li>
-            <li><b>Триггеры на каждую ставку</b>, например бонус сразу после крупного выигрыша: продумал дизайн и координировал команду, которая их реализовала. Поток игровых раундов сопоставляется с заранее скомпилированными матчерами триггеров, а in-process LRU/TTL-кэши инвалидируются через Redis pub/sub. <b>~2,75 с</b> от ставки до действия.</li>
-            <li><b>Ожидания по расписанию в воркфлоу</b> («подождать 3 дня, затем отправить оффер»): реализовал еженедельные range-партиции в PostgreSQL рядом с MongoDB, стейт-машину задержек и cron-планировщик, который массово ставит задачи Sidekiq в очередь 30-секундными бакетами.</li>
-            <li><b>Активные/неактивные игроки:</b> убрал пересчёт сегментов для неактивных игроков; среднее время пересчёта <b>−54%</b>, <b>~300 ГБ</b> холодных данных ушли с горячего пути.</li>
+            <li><b>Движок маркетинговой автоматизации</b> (правила, которые реагируют на действия игрока в реальном времени): работал над ним с первой версии в 2022 году. Триггер (40+ типов, включая расписания и триггеры на каждую ставку) запускает воркфлоу, условия (128 типов) проверяют игрока, а действия начисляют бонусы и комп-поинты, ставят теги или отправляют уведомления. Я реализовал первые действия, валидации воркфлоу и декомпозицию триггеров, позже помогал масштабировать движок и раскатывать его на бренды. Движок обрабатывает <b>2+ тыс. событий в секунду</b>, сейчас в нём <b>5+ тыс. активных воркфлоу</b>.</li>
+            <li><b>Триггеры на каждую ставку</b>, например бонус сразу после крупного выигрыша: спроектировал решение и координировал команду, которая его реализовала. Поток игровых раундов сопоставляется с заранее скомпилированными матчерами триггеров, а in-process LRU/TTL-кэши инвалидируются через Redis pub/sub. <b>~2,75 с</b> от ставки до действия.</li>
+            <li><b>Задержки в воркфлоу</b> («подождать 3 дня, затем отправить оффер»): добавил в сервис на MongoDB PostgreSQL с еженедельными range-партициями, реализовал стейт-машину задержек и cron-планировщик, который массово ставит задачи Sidekiq в очередь 30-секундными окнами.</li>
+            <li><b>Активные/неактивные игроки:</b> убрал пересчёт сегментов для неактивных игроков; среднее время пересчёта <b>−54%</b>, <b>~300 ГБ</b> холодных данных вынесены из основного потока обработки.</li>
             <li><b>Декомпозиция событий:</b> разбил крупные события обновления игрока на мелкие, чтобы пересчитывались только зависимые сегменты: <b>−31%</b> событий пересчёта.</li>
-            <li><b>Разделение сервиса:</b> участвовал в разделении multi-tenant-сервиса на 3 независимых продакшен-стека и в переносе казино между ними партиями, без простоя всего сервиса.</li>
-            <li><b>Фильтры:</b> переработал построение фильтров сегментации и вынес 70+ фильтров из монолита платформы. Новый фильтр теперь занимает <b>6 ч вместо 20 ч</b> и <b>одного разработчика вместо двух</b> и выходит без релиза платформы.</li>
-            <li>Обновления и поддержка: Rails 6.1 → 7.0, Mongoid 8, тюнинг Karafka 2.5, bigint для ID пользователей, миграция Kafka-кластера, оптимизация индексов MongoDB на коллекциях со 100+ млн записей.</li>
+            <li><b>Разделение сервиса:</b> участвовал в разбиении мультитенантного сервиса на 3 независимых продакшен-стека и в переносе казино между ними партиями, без простоя всего сервиса.</li>
+            <li><b>Фильтры:</b> переработал построение фильтров сегментации и вынес 70+ фильтров из монолита платформы. Новый фильтр теперь делает <b>один разработчик за 6 ч</b> (раньше <b>двое за 20 ч</b>), и выходит он без релиза платформы.</li>
+            <li>Обновления и поддержка: Rails 6.1 → 7.0, Mongoid 8, тюнинг Karafka 2.5, bigint для ID пользователей, миграция Kafka-кластера, оптимизация индексов MongoDB на коллекциях со 100+ млн документов.</li>
           </ul>
         </article>
 
         <article class="job past">
-          <div class="job-head"><h3>Ruby on Rails Developer <span>· Aristek Systems</span></h3><span class="when">янв. 2021 — нояб. 2021</span></div>
+          <div class="job-head"><h3>Ruby on Rails Developer <span>· Aristek Systems</span></h3><span class="when">март 2021 — нояб. 2021</span></div>
           <p class="scope">STEMscopes — платформа STEM-обучения для школ США (K-12) от <a href="https://www.acceleratelearning.com/" target="_blank" rel="noopener">Accelerate Learning</a>, ею пользуются 6+ млн учеников и 600+ тыс. учителей во всех 50 штатах</p>
           <ul class="ticks">
             <li>Разрабатывал REST API, пока команда разделяла большой Rails-монолит на сервисы с фронтендом на React.</li>
@@ -834,10 +834,10 @@
         </article>
 
         <article class="job past">
-          <div class="job-head"><h3>Junior Ruby on Rails Developer <span>· iTechArt Group</span></h3><span class="when">май 2020 — янв. 2021</span></div>
-          <p class="scope">Программа по Ruby on Rails: один сквозной проект — новостной портал</p>
+          <div class="job-head"><h3>Junior Ruby on Rails Developer <span>· iTechArt Group</span></h3><span class="when">окт. 2020 — февр. 2021</span></div>
+          <p class="scope">Программа по Ruby on Rails с учебным проектом — новостным порталом</p>
           <ul class="ticks">
-            <li>Разработал и задеплоил новостной портал (231 коммит, 27 PR): четыре роли с редакционным воркфлоу от корреспондента до редактора, импорт и экспорт RSS, email-дайджесты по категориям, тегам или регионам, комментарии и рейтинги, аналитика просмотров и отчёты с графиками в админке.</li>
+            <li>Разработал и развернул портал: четыре роли с редакционным воркфлоу от корреспондента до редактора, импорт и экспорт RSS, email-дайджесты по категориям, тегам или регионам, комментарии и рейтинги, аналитика просмотров и отчёты с графиками в админке.</li>
             <li>Rails 6, PostgreSQL, Sidekiq и cron-задачи, Devise с GitHub OAuth, CanCanCan; тесты на RSpec, Capybara и FactoryBot, N+1-запросы отлавливал с помощью Bullet.</li>
           </ul>
         </article>
@@ -866,19 +866,19 @@
           <details>
             <summary>Как это устроено</summary>
             <ul>
-              <li>CODEOWNERS и карта «сервис — команда»: у каждого репозитория, DAG и алерта есть владелец; ревью назначаются автоматически.</li>
-              <li>Бот для код-ревью: назначает ревьюера на каждый мерж-реквест, выбирая наименее загруженного за 30-дневное окно с мягким лимитом на открытые ревью; напоминает в рабочие часы, эскалирует зависшие ревью лиду и считает время до первого ревью и до мержа.</li>
-              <li>Интерактивная документация для онбординга с симуляторами и квизами, чтобы новый инженер мог разобраться в сервисе самостоятельно.</li>
+              <li>CODEOWNERS и карта «сервис — команда»: у каждого репозитория, DAG и алерта есть владелец; ревьюеры назначаются автоматически.</li>
+              <li>Бот для назначения ревьюеров: назначает на каждый мерж-реквест наименее загруженного ревьюера (по нагрузке за последние 30 дней) с мягким лимитом на открытые ревью; напоминает в рабочие часы, сообщает тимлиду о зависших ревью и считает время до первого ревью и до мержа.</li>
+              <li>Интерактивная документация для онбординга с симуляторами и квизами, чтобы новый сотрудник мог разобраться в сервисе самостоятельно.</li>
             </ul>
           </details>
         </article>
 
         <article class="case">
-          <span class="label">Разработчик</span>
+          <span class="label">Разработка</span>
           <h3>Маркетинговая автоматизация в реальном времени</h3>
           <p>Движок воркфлоу, который реагирует на события игроков в реальном времени: триггер запускает воркфлоу, условия проверяют игрока, а действия начисляют бонусы, добавляют теги или отправляют уведомления.</p>
           <div class="results">
-            <div><div class="v grad-text">2+ тыс./с</div><div class="k">обработка событий</div></div>
+            <div><div class="v grad-text">2+ тыс./с</div><div class="k">событий на входе</div></div>
             <div><div class="v grad-text">5+ тыс.</div><div class="k">активных воркфлоу</div></div>
             <div><div class="v grad-text">128</div><div class="k">типов условий</div></div>
           </div>
@@ -904,18 +904,18 @@
             <summary>Как это устроено</summary>
             <ul>
               <li>Батчевый консьюмер Kafka на событиях игровых раундов группирует ставки по казино и сопоставляет их с заранее скомпилированными матчерами триггеров.</li>
-              <li>In-process LRU-кэши с TTL хранят скомпилированные воркфлоу и счётчики по игрокам; счётчики сбрасываются каждые 30 с, а также при вытеснении, ребалансе или остановке.</li>
+              <li>In-process LRU-кэши с TTL хранят скомпилированные воркфлоу и счётчики по игрокам; счётчики выгружаются каждые 30 с, а также при вытеснении, ребалансе или остановке.</li>
               <li>Инвалидация кэша рассылается через Redis pub/sub; защитные ограничения задают лимит на число триггеров и минимальную ставку.</li>
             </ul>
           </details>
         </article>
 
         <article class="case">
-          <span class="label">Реализовал</span>
-          <h3>Ожидания по расписанию в воркфлоу</h3>
+          <span class="label">Реализация</span>
+          <h3>Задержки в воркфлоу</h3>
           <p>«Подождать 3 дня, затем отправить оффер». Ставит воркфлоу на паузу для каждого игрока и возобновляет его в пределах 30-секундного окна планирования.</p>
           <div class="results">
-            <div><div class="v grad-text">30 с</div><div class="k">бакеты планирования</div></div>
+            <div><div class="v grad-text">30 с</div><div class="k">окно планирования</div></div>
             <div><div class="v grad-text">10 тыс.</div><div class="k">задач за один bulk push</div></div>
           </div>
           <details>
@@ -923,18 +923,18 @@
             <ul>
               <li>Добавил PostgreSQL в сервис на MongoDB: еженедельные range-партиции, которые создаются заранее и ротируются по cron.</li>
               <li>Стейт-машина: waiting → queued → started → finished / skipped / failed.</li>
-              <li>Cron-задача каждые 5 минут подбирает просроченные задержки и заранее ставит в очередь следующие 10 минут через Sidekiq bulk push; монитор сбоев отслеживает зависшие задержки.</li>
+              <li>Cron-задача каждые 5 минут подбирает просроченные задержки и заранее ставит в очередь задачи на следующие 10 минут через Sidekiq bulk push; монитор сбоев отслеживает зависшие задержки.</li>
             </ul>
           </details>
         </article>
 
         <article class="case">
-          <span class="label">Реализовал</span>
+          <span class="label">Реализация</span>
           <h3>Активные / неактивные игроки</h3>
           <p>Убрал пересчёт сегментов для игроков, которые больше не активны, не меняя результатов для активных. Рассказал об этом на внутренней конференции SOFTSWISS.</p>
           <div class="results">
             <div><div class="v grad-text">−54%</div><div class="k">среднее время пересчёта</div></div>
-            <div><div class="v grad-text">~300 ГБ</div><div class="k">ушли с горячего пути</div></div>
+            <div><div class="v grad-text">~300 ГБ</div><div class="k">вынесены из основного потока</div></div>
           </div>
           <details>
             <summary>Как это устроено</summary>
@@ -968,9 +968,9 @@
         <div class="side">
         <div class="box" id="recognition">
           <h3>Достижения</h3>
-          <div class="award"><div class="medal">1-е</div><div><div class="t"><a href="https://www.softswiss.com/news/ai-hackathon-2026/" target="_blank" rel="noopener">SOFTSWISS AI Hackathon 2026</a></div><div class="d">Команда Alpine Black Goose: AI-инструмент для SDLC 2.0. 34 команды, 21 страна.</div></div></div>
+          <div class="award"><div class="medal">1-е</div><div><div class="t"><a href="https://www.softswiss.com/news/ai-hackathon-2026/" target="_blank" rel="noopener">SOFTSWISS AI Hackathon 2026</a></div><div class="d">Команда Alpine Black Goose: AI-инструмент для SDLC 2.0. Участвовали 34 команды из 21 страны.</div></div></div>
           <div class="award"><div class="medal">1-е</div><div><div class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7396347704097828864/" target="_blank" rel="noopener">SOFTSWISS Hackathon 2025</a></div><div class="d">PvP-битвы для игроков казино: мультиплеерный прототип за 48 часов на WebRTC с помощью AI-инструментов.</div></div></div>
-          <div class="award"><div class="medal alt">Доклад</div><div><div class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7355708990917435395/" target="_blank" rel="noopener">“Hit the Target. Smarter Recalculations.”</a></div><div class="d">Внутренняя конференция SOFTSWISS, 2025. Также подробный технический разбор сервиса сегментации, 2024.</div></div></div>
+          <div class="award"><div class="medal alt">Доклад</div><div><div class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7355708990917435395/" target="_blank" rel="noopener">«Hit the Target. Smarter Recalculations.»</a></div><div class="d">Внутренняя конференция SOFTSWISS, 2025. Также подробный технический разбор сервиса сегментации, 2024.</div></div></div>
         </div>
 
         <div class="box">
@@ -1006,11 +1006,11 @@
         <div>
           <span class="eyebrow">Backend · Ruby on Rails · Kafka</span>
           <h1>Pavel Biarkovich</h1>
-          <p class="role">Backend Team Lead <span>· mikroserwisy iGaming o wysokim obciążeniu</span></p>
+          <p class="role">Backend Team Lead <span>· mikroserwisy iGaming pod dużym obciążeniem</span></p>
           <p class="lead">
-            6+ lat z Ruby on Rails. W <b>SOFTSWISS</b> prowadzę cross-funkcyjny zespół <b>15 osób</b>, który odpowiada za
+            6+ lat pracy z Ruby on Rails. W <b>SOFTSWISS</b> prowadzę cross-funkcyjny zespół <b>15 osób</b>, który odpowiada za
             <b>9 mikroserwisów iGaming typu event-driven</b>. Obsługują one <b>300+ operatorów kasyn online</b> i konsumują
-            <b>8,5 tys. zdarzeń Kafka/s</b>. Wcześniej przez cztery lata rozwijałem serwis segmentacji graczy
+            <b>8,5 tys. zdarzeń z Kafki na sekundę</b>. Wcześniej przez cztery lata rozwijałem serwis segmentacji graczy
             i jego silnik marketing automation. Teraz odpowiadam za planowanie, mentoring i release'y zespołu.
           </p>
           <ul class="links">
@@ -1037,8 +1037,8 @@
         <div class="stat"><div class="v grad-text">15</div><div class="k">osób w moim zespole</div></div>
         <div class="stat"><div class="v grad-text">9</div><div class="k">serwisów produkcyjnych pod opieką zespołu</div></div>
         <div class="stat"><div class="v grad-text">300+</div><div class="k">obsługiwanych operatorów kasyn</div></div>
-        <div class="stat"><div class="v grad-text long">8,5&nbsp;tys./s</div><div class="k">konsumowanych zdarzeń Kafka</div></div>
-        <div class="stat"><div class="v grad-text">6+ lat</div><div class="k">z Ruby on Rails</div></div>
+        <div class="stat"><div class="v grad-text long">8,5&nbsp;tys./s</div><div class="k">konsumowanych zdarzeń z Kafki</div></div>
+        <div class="stat"><div class="v grad-text">6+ lat</div><div class="k">pracy z Ruby on Rails</div></div>
       </div>
     </header>
 
@@ -1053,14 +1053,14 @@
         <article class="job current">
           <div class="job-head"><h3>Backend Team Lead <span>· SOFTSWISS</span></h3><span class="when">2026 — obecnie</span></div>
           <p class="scope">9 serwisów: segmentacja graczy, system bonusowy, turnieje, jackpoty, powiadomienia w czasie rzeczywistym i gateway WebSocket, product store, czat graczy, customer engagement, integracje</p>
-          <div class="chips"><span class="chip hot">7 backend · 3 frontend · 3 QA · 2 AQA</span><span class="chip">Roadmapa i planowanie sprintów</span><span class="chip">Przeglądy architektury</span><span class="chip">Release'y</span><span class="chip">Zarządzanie incydentami</span><span class="chip">Spotkania 1:1 i mentoring</span></div>
+          <div class="chips"><span class="chip hot">7 backend · 3 frontend · 3 QA · 2 QA automation</span><span class="chip">Roadmapa i planowanie sprintów</span><span class="chip">Przeglądy architektury</span><span class="chip">Release'y</span><span class="chip">Zarządzanie incydentami</span><span class="chip">Spotkania 1:1 i mentoring</span></div>
           <ul class="ticks">
-            <li>Prowadzę <b>cross-funkcyjny zespół 15 osób</b>, który utrzymuje 9 mikroserwisów produkcyjnych, i jestem <b>bezpośrednim przełożonym 5 backend developerów</b>. Odpowiadam za roadmapę i planowanie sprintów, przeglądy architektury, release'y i zarządzanie incydentami.</li>
-            <li><b>Ludzie:</b> regularne spotkania 1:1, plany onboardingu dla nowych osób, mentoring przez code review i przeglądy designu.</li>
+            <li>Prowadzę <b>cross-funkcyjny zespół 15 osób</b>, do którego należy 9 mikroserwisów produkcyjnych, i jestem <b>bezpośrednim przełożonym 5 backend developerów</b>. Odpowiadam za roadmapę i planowanie sprintów, przeglądy architektury, release'y i zarządzanie incydentami.</li>
+            <li><b>Ludzie:</b> regularne spotkania 1:1, plany onboardingu dla nowych osób, mentoring w ramach code review i przeglądów architektury.</li>
             <li><b>Code ownership:</b> wdrożyłem CODEOWNERS i mapę serwis–zespół. Każde repozytorium, DAG Airflow i alert ma właściciela, a review trafiają automatycznie do właściwych osób.</li>
-            <li><b>Bot do code review</b> (TypeScript, GitLab + Slack), jestem jego głównym developerem. Z narzędziami AI kod powstaje szybciej, a wąskim gardłem stało się review. Bot przypisuje reviewera do każdego merge requesta, wybierając najmniej obciążoną osobę. Przypomina w godzinach pracy, eskaluje zablokowane review do leada i raportuje czas do pierwszego review i do merge'a. Korzysta z niego <b>8 zespołów i 47 reviewerów</b>. Osobno wdrożyłem AI code review (CodeRabbit, Cursor) w 5 repozytoriach.</li>
-            <li><b>Dokumentacja onboardingowa:</b> piszę interaktywne przewodniki po serwisach zespołu z diagramami architektury, symulatorami zdarzeń krok po kroku, playbookami do debugowania i quizami. Nowym inżynierom łatwiej się z nich uczyć niż ze statycznych stron wiki.</li>
-            <li><b>Automatyzacja i optymalizacja:</b> razem z zespołem stale usuwamy ręczną i powolną pracę z naszych serwisów. Rutynowe zadania operacyjne, np. onboarding nowych klientów-kasyn, przenosimy do pipeline'ów Airflow. Optymalizujemy wolne ścieżki w kodzie, a release notes przygotowujemy z pomocą LLM.</li>
+            <li><b>Bot do przydzielania review</b> (TypeScript, GitLab + Slack): jestem jego głównym developerem. Z narzędziami AI kod powstaje szybciej, a wąskim gardłem stało się review. Bot przypisuje reviewera do każdego merge requesta, wybierając najmniej obciążoną osobę. Przypomina reviewerom w godzinach pracy, eskaluje zaległe review do leada i raportuje czas do pierwszego review i do merge'a. Korzysta z niego <b>8 zespołów i 47 reviewerów</b>. Osobno wdrożyłem AI code review (CodeRabbit, Cursor) w 5 repozytoriach.</li>
+            <li><b>Dokumentacja onboardingowa:</b> piszę interaktywne przewodniki po serwisach zespołu z diagramami architektury, symulatorami zdarzeń krok po kroku, playbookami do debugowania i quizami.</li>
+            <li><b>Automatyzacja i optymalizacja:</b> razem z zespołem stale ograniczamy ręczną i czasochłonną pracę przy naszych serwisach. Rutynowe zadania operacyjne, np. onboarding nowych kasyn, przenosimy do pipeline'ów Airflow, optymalizujemy wolne fragmenty kodu, a release notes przygotowujemy z pomocą LLM.</li>
           </ul>
         </article>
 
@@ -1069,32 +1069,32 @@
           <p class="scope">Segmentacja graczy w czasie rzeczywistym i silnik marketing automation dla platformy iGaming B2B · multi-tenant, 300+ operatorów kasyn</p>
           <div class="chips"><span class="chip">Ruby 3.4</span><span class="chip">Rails 7</span><span class="chip">Kafka · Karafka</span><span class="chip">Sidekiq</span><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Kubernetes</span></div>
           <ul class="ticks">
-            <li><b>Silnik marketing automation</b> (reguły reagujące na akcje graczy w czasie rzeczywistym): pracowałem nad nim od pierwszej wersji w 2022 roku. Trigger (40+ typów, w tym harmonogramy i triggery na każdy zakład) uruchamia workflow, warunki (128 typów) sprawdzają gracza, a akcje przyznają bonusy i comp pointy, ustawiają tagi lub wysyłają powiadomienia. Zaimplementowałem pierwsze akcje, walidacje workflow i dekompozycję triggerów. Później pomagałem skalować silnik i wdrażać go u kolejnych brandów. <b>2+ tys. zdarzeń na sekundę</b>; obecnie <b>5+ tys. aktywnych workflow</b>.</li>
-            <li><b>Triggery na każdy zakład</b>, np. bonus zaraz po dużej wygranej: zaplanowałem projekt rozwiązania i koordynowałem zespół, który je zbudował. Strumień rund gry jest dopasowywany do prekompilowanych matcherów triggerów. Cache LRU/TTL działają w procesie i są inwalidowane przez Redis pub/sub. <b>~2,75 s</b> od zakładu do akcji.</li>
-            <li><b>Zaplanowane opóźnienia w workflow</b> („poczekaj 3 dni, potem wyślij ofertę”), moja implementacja: tygodniowe partycje zakresowe w PostgreSQL obok MongoDB, maszyna stanów opóźnień i scheduler cron, który masowo kolejkuje joby Sidekiq w 30-sekundowych kubełkach.</li>
+            <li><b>Silnik marketing automation</b> (reguły reagujące na akcje graczy w czasie rzeczywistym): pracowałem nad nim od pierwszej wersji w 2022 roku. Trigger (40+ typów, w tym harmonogramy i triggery na każdy zakład) uruchamia workflow, warunki (128 typów) sprawdzają gracza, a akcje przyznają bonusy i comp pointy, ustawiają tagi lub wysyłają powiadomienia. Zaimplementowałem pierwsze akcje, walidacje workflow i dekompozycję triggerów. Później pomagałem skalować silnik i wdrażać go u kolejnych marek. <b>2+ tys. zdarzeń na sekundę</b>; obecnie <b>5+ tys. aktywnych workflow</b>.</li>
+            <li><b>Triggery na każdy zakład</b>, np. bonus zaraz po dużej wygranej: zaplanowałem architekturę rozwiązania i koordynowałem zespół, który je zbudował. Strumień rund gry jest dopasowywany do prekompilowanych matcherów triggerów. Cache LRU/TTL działają w procesie i są inwalidowane przez Redis pub/sub. <b>~2,75 s</b> od zakładu do akcji.</li>
+            <li><b>Zaplanowane opóźnienia w workflow</b> („poczekaj 3 dni, potem wyślij ofertę”): zaimplementowałem tygodniowe partycje zakresowe w PostgreSQL obok MongoDB, maszynę stanów opóźnień i scheduler cron, który masowo kolejkuje joby Sidekiq w 30-sekundowych oknach.</li>
             <li><b>Aktywni/nieaktywni gracze:</b> wyłączyłem przeliczanie segmentów dla nieaktywnych graczy. Średni czas przeliczenia <b>−54%</b>, <b>~300 GB</b> zimnych danych poza hot path.</li>
-            <li><b>Dekompozycja zdarzeń:</b> podzieliłem ogólne zdarzenia aktualizacji gracza na bardziej szczegółowe, więc przeliczają się tylko zależne segmenty: <b>−31%</b> zdarzeń przeliczeń.</li>
+            <li><b>Dekompozycja zdarzeń:</b> podzieliłem ogólne zdarzenia aktualizacji gracza na bardziej szczegółowe, więc przeliczają się tylko zależne segmenty: <b>−31%</b> zdarzeń wywołujących przeliczenie.</li>
             <li><b>Podział serwisu:</b> brałem udział w podziale serwisu multi-tenant na 3 niezależne stacki produkcyjne i w migracji kasyn między nimi partiami, bez przestoju całego serwisu.</li>
-            <li><b>Filtry:</b> przebudowałem sposób tworzenia filtrów segmentacji i przeniosłem ponad 70 z nich z monolitu platformy. Nowy filtr wymaga teraz <b>6 h zamiast 20 h</b> i <b>jednego developera zamiast dwóch</b>. Trafia na produkcję bez release'u platformy.</li>
-            <li>Aktualizacje i utrzymanie: Rails 6.1 → 7.0, Mongoid 8, tuning Karafka 2.5, ID użytkowników typu bigint, migracja klastra Kafka, tuning indeksów MongoDB w kolekcjach 100+ mln rekordów.</li>
+            <li><b>Filtry:</b> przebudowałem sposób tworzenia filtrów segmentacji i przeniosłem ponad 70 z nich z monolitu platformy. Przygotowanie nowego filtra zajmuje teraz <b>6 h zamiast 20 h</b> i angażuje <b>jednego developera zamiast dwóch</b>, a filtr trafia na produkcję bez release'u platformy.</li>
+            <li>Aktualizacje i utrzymanie: Rails 6.1 → 7.0, Mongoid 8, tuning Karafka 2.5, ID użytkowników typu bigint, migracja klastra Kafki, tuning indeksów MongoDB w kolekcjach liczących ponad 100 mln dokumentów.</li>
           </ul>
         </article>
 
         <article class="job past">
-          <div class="job-head"><h3>Ruby on Rails Developer <span>· Aristek Systems</span></h3><span class="when">sty 2021 — lis 2021</span></div>
-          <p class="scope">STEMscopes, amerykańska platforma edukacyjna STEM dla szkół K-12 od <a href="https://www.acceleratelearning.com/" target="_blank" rel="noopener">Accelerate Learning</a>. Korzysta z niej ponad 6 mln uczniów i ponad 600 tys. nauczycieli we wszystkich 50 stanach</p>
+          <div class="job-head"><h3>Ruby on Rails Developer <span>· Aristek Systems</span></h3><span class="when">mar 2021 — lis 2021</span></div>
+          <p class="scope">STEMscopes, amerykańska platforma edukacyjna STEM dla szkół podstawowych i średnich (K-12) firmy <a href="https://www.acceleratelearning.com/" target="_blank" rel="noopener">Accelerate Learning</a>. Korzysta z niej ponad 6 mln uczniów i ponad 600 tys. nauczycieli we wszystkich 50 stanach</p>
           <ul class="ticks">
             <li>Pracowałem nad REST API, gdy zespół dzielił duży monolit Rails na serwisy z frontendem w React.</li>
             <li>Rozwijałem i utrzymywałem funkcje backendowe dla nauczycieli i uczniów w rozproszonym zespole Scrum z product ownerami z USA.</li>
-            <li>Pokryłem legacy kod testami jednostkowymi i integracyjnymi w RSpec, dzięki czemu zespół mógł go bezpiecznie refaktoryzować.</li>
+            <li>Pokryłem kod legacy testami jednostkowymi i integracyjnymi w RSpec, dzięki czemu zespół mógł go bezpiecznie refaktoryzować.</li>
           </ul>
         </article>
 
         <article class="job past">
-          <div class="job-head"><h3>Junior Ruby on Rails Developer <span>· iTechArt Group</span></h3><span class="when">maj 2020 — sty 2021</span></div>
-          <p class="scope">Program Ruby on Rails: jeden projekt end-to-end, portal informacyjny</p>
+          <div class="job-head"><h3>Junior Ruby on Rails Developer <span>· iTechArt Group</span></h3><span class="when">paź 2020 — lut 2021</span></div>
+          <p class="scope">Program szkoleniowy Ruby on Rails: jeden projekt end-to-end – portal informacyjny</p>
           <ul class="ticks">
-            <li>Zbudowałem i wdrożyłem portal informacyjny (231 commitów, 27 PR): cztery role z workflow redakcyjnym od korespondenta do redaktora, import i eksport RSS, digesty e-mailowe według kategorii, tagu lub regionu, komentarze i oceny, analityka wyświetleń oraz raporty z wykresami w panelu admina.</li>
+            <li>Zbudowałem i wdrożyłem portal informacyjny: cztery role z workflow redakcyjnym od korespondenta do redaktora, import i eksport RSS, digesty e-mailowe według kategorii, tagu lub regionu, komentarze i oceny, analityka wyświetleń oraz raporty z wykresami w panelu admina.</li>
             <li>Rails 6, PostgreSQL, Sidekiq i zadania cron, Devise z GitHub OAuth, CanCanCan; testy w RSpec, Capybara i FactoryBot, zapytania N+1 wyłapywane przez Bullet.</li>
           </ul>
         </article>
@@ -1104,7 +1104,7 @@
     <!-- SELECTED WORK -->
     <section class="sec" id="work">
       <div class="sec-head">
-        <div><span class="kicker grad-text">Case studies</span><h2>Kluczowe zadania</h2></div>
+        <div><span class="kicker grad-text">Case studies</span><h2>Wybrane projekty</h2></div>
         <p>Rozwiń „Jak to działa”, aby zobaczyć szczegóły techniczne.</p>
       </div>
 
@@ -1113,10 +1113,10 @@
           <div>
             <span class="label">Zarządzanie zespołem</span>
             <h3>Praktyki zespołowe</h3>
-            <p>Code ownership, bot, który przypisuje reviewerów i pilnuje, żeby review nie utykały, oraz interaktywna dokumentacja onboardingowa do serwisów zespołu.</p>
+            <p>Code ownership, bot, który przypisuje reviewerów i pilnuje, żeby review nie zalegały, oraz interaktywna dokumentacja onboardingowa do serwisów zespołu.</p>
           </div>
           <div class="results">
-            <div><div class="v grad-text">8</div><div class="k">zespołów korzysta z bota do review</div></div>
+            <div><div class="v grad-text">8</div><div class="k">zespołów korzysta z bota</div></div>
             <div><div class="v grad-text">47</div><div class="k">reviewerów</div></div>
             <div><div class="v grad-text">9</div><div class="k">serwisów, każdy z właścicielem</div></div>
           </div>
@@ -1124,7 +1124,7 @@
             <summary>Jak to działa</summary>
             <ul>
               <li>CODEOWNERS i mapa serwis–zespół: każde repozytorium, DAG i alert ma właściciela; review są kierowane automatycznie.</li>
-              <li>Bot do code review: przypisuje reviewera do każdego merge requesta, wybierając najmniej obciążoną osobę w oknie 30 dni, z miękkim limitem otwartych review. Przypomina w godzinach pracy, eskaluje zablokowane review do leada i raportuje czas do pierwszego review i do merge'a.</li>
+              <li>Bot do przydzielania review: przypisuje reviewera do każdego merge requesta, wybierając najmniej obciążoną osobę w oknie 30 dni, z miękkim limitem otwartych review. Przypomina reviewerom w godzinach pracy, eskaluje zaległe review do leada i raportuje czas do pierwszego review i do merge'a.</li>
               <li>Interaktywna dokumentacja onboardingowa z symulatorami i quizami, dzięki której nowy inżynier może samodzielnie poznać serwis.</li>
             </ul>
           </details>
@@ -1160,9 +1160,9 @@
           <details>
             <summary>Jak to działa</summary>
             <ul>
-              <li>Batchowy konsument Kafka czyta zdarzenia rund gry, grupuje zakłady według kasyna i dopasowuje je do prekompilowanych matcherów triggerów.</li>
+              <li>Batchowy konsument Kafki czyta zdarzenia rund gry, grupuje zakłady według kasyna i dopasowuje je do prekompilowanych matcherów triggerów.</li>
               <li>Cache LRU z TTL w procesie przechowują skompilowane workflow i liczniki per gracz. Liczniki są zrzucane co 30 s oraz przy eviction, rebalansie lub zamknięciu procesu.</li>
-              <li>Inwalidacja cache jest rozgłaszana przez Redis pub/sub; zabezpieczenia ograniczają liczbę triggerów i minimalną stawkę.</li>
+              <li>Inwalidacja cache jest rozgłaszana przez Redis pub/sub; zabezpieczenia: limit liczby triggerów i próg minimalnej stawki.</li>
             </ul>
           </details>
         </article>
@@ -1172,7 +1172,7 @@
           <h3>Zaplanowane opóźnienia w workflow</h3>
           <p>„Poczekaj 3 dni, potem wyślij ofertę.” Wstrzymuje workflow dla każdego gracza i wznawia go w 30-sekundowym oknie planowania.</p>
           <div class="results">
-            <div><div class="v grad-text">30 s</div><div class="k">kubełki planowania</div></div>
+            <div><div class="v grad-text">30 s</div><div class="k">okno planowania</div></div>
             <div><div class="v grad-text">10 tys.</div><div class="k">jobów w jednym bulk push</div></div>
           </div>
           <details>
@@ -1180,7 +1180,7 @@
             <ul>
               <li>Dodałem PostgreSQL do serwisu na MongoDB: tygodniowe partycje zakresowe, tworzone z wyprzedzeniem i rotowane przez cron.</li>
               <li>Maszyna stanów: waiting → queued → started → finished / skipped / failed.</li>
-              <li>Job cron co 5 minut pobiera zaległe opóźnienia i z wyprzedzeniem kolejkuje kolejne 10 minut przez Sidekiq bulk push. Monitor błędów wychwytuje zawieszone opóźnienia.</li>
+              <li>Job cron co 5 minut pobiera opóźnienia, których termin już minął, i z wyprzedzeniem kolejkuje te przypadające na najbliższe 10 minut (Sidekiq bulk push). Monitor błędów wychwytuje zawieszone opóźnienia.</li>
             </ul>
           </details>
         </article>
@@ -1227,7 +1227,7 @@
           <h3>Osiągnięcia</h3>
           <div class="award"><div class="medal">1.</div><div><div class="t"><a href="https://www.softswiss.com/news/ai-hackathon-2026/" target="_blank" rel="noopener">SOFTSWISS AI Hackathon 2026</a></div><div class="d">Zespół Alpine Black Goose: narzędzie SDLC 2.0 oparte na AI. 34 zespoły, 21 krajów.</div></div></div>
           <div class="award"><div class="medal">1.</div><div><div class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7396347704097828864/" target="_blank" rel="noopener">SOFTSWISS Hackathon 2025</a></div><div class="d">Pojedynki PvP dla graczy kasyn: prototyp multiplayer zbudowany w 48 godzin z użyciem WebRTC i narzędzi AI.</div></div></div>
-          <div class="award"><div class="medal alt">Talk</div><div><div class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7355708990917435395/" target="_blank" rel="noopener">“Hit the Target. Smarter Recalculations.”</a></div><div class="d">Wewnętrzna konferencja SOFTSWISS, 2025. Wcześniej także techniczny deep dive o serwisie segmentacji, 2024.</div></div></div>
+          <div class="award"><div class="medal alt">Talk</div><div><div class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7355708990917435395/" target="_blank" rel="noopener">„Hit the Target. Smarter Recalculations.”</a></div><div class="d">Wewnętrzna konferencja SOFTSWISS, 2025. Wcześniej także techniczny deep dive o serwisie segmentacji, 2024.</div></div></div>
         </div>
 
         <div class="box">
@@ -1267,7 +1267,7 @@
             dl: 'Download', dlnote: '', dltitle: 'Download the PDF', title: 'Pavel Biarkovich — Backend Team Lead' },
       ru: { experience: 'Опыт', work: 'Ключевые задачи', skills: 'Навыки', recognition: 'Достижения',
             dl: 'Скачать', dlnote: ' (EN)', dltitle: 'Скачать PDF на английском', title: 'Pavel Biarkovich — Backend Team Lead' },
-      pl: { experience: 'Doświadczenie', work: 'Kluczowe zadania', skills: 'Umiejętności', recognition: 'Osiągnięcia',
+      pl: { experience: 'Doświadczenie', work: 'Wybrane projekty', skills: 'Umiejętności', recognition: 'Osiągnięcia',
             dl: 'Pobierz', dlnote: ' (EN)', dltitle: 'Pobierz PDF po angielsku', title: 'Pavel Biarkovich — Backend Team Lead' }
     };
     var main = document.getElementById('top');
